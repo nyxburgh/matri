@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Profiles | Namma Matrimony</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+:root{
+      --pink:#E91E8C; --pink-light:#FF6EBB; --pink-pale:#FDE8F4; --pink-mid:#F48CBB;
+      --green:#1B8C5E; --green-light:#27C47F; --green-pale:#E5F7F0;
+      --dark:#1A1028; --text:#3D3046; --muted:#8B7E97;
+      --border:#F0E6F6; --bg:#F7F1FB;
+      --shadow-pink:0 8px 32px rgba(233,30,140,.18);
+      --shadow-green:0 8px 32px rgba(27,140,94,.15);
+      --radius:14px; --radius-lg:22px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif}
+    a{text-decoration:none;color:inherit}
+
+    /* ── Buttons ── */
+    .btn-pink{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border:none;border-radius:50px;padding:.55rem 1.4rem;font-weight:600;font-size:.88rem;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(233,30,140,.22)}
+    .btn-pink:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(233,30,140,.3);color:#fff}
+    .btn-green{background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;border:none;border-radius:50px;padding:.55rem 1.4rem;font-weight:600;font-size:.88rem;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(27,140,94,.2)}
+    .btn-green:hover{transform:translateY(-2px);color:#fff}
+    .btn-outline-pink{border:2px solid var(--pink);color:var(--pink);border-radius:50px;padding:.5rem 1.2rem;font-weight:600;font-size:.85rem;background:transparent;transition:all .2s}
+    .btn-outline-pink:hover{background:var(--pink);color:#fff}
+
+    /* ══ NAVBAR ══ */
+    .navbar{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.8rem 0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+    .navbar.scrolled{box-shadow:0 4px 20px rgba(233,30,140,.1)}
+    .navbar-brand{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-link{color:var(--text)!important;font-weight:500;font-size:.88rem;padding:.38rem .8rem!important;border-radius:8px;transition:background .2s}
+    .nav-link:hover,.nav-link.active-link{background:var(--pink-pale);color:var(--pink)!important}
+    .lang-btn{font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;border:1.5px solid #EDD7EA;border-radius:8px;padding:.28rem .65rem;transition:all .2s;background:transparent}
+    .lang-btn:hover,.lang-btn.active{border-color:var(--pink);color:var(--pink);background:var(--pink-pale)}
+    @media(max-width:991.98px){
+      .navbar-toggler{display:none!important}
+      #navMenu{display:none!important}
+      .navbar .container{display:flex;flex-direction:column;align-items:center;gap:.28rem;padding:.38rem 1rem}
+      .navbar-brand{font-size:1.1rem}
+    }
+    .mobile-lang-row{display:none}
+    @media(max-width:991.98px){.mobile-lang-row{display:flex;gap:.5rem}}
+    @media(min-width:992px){.mobile-lang-row{display:none!important}}
+
+    /* ══ SEARCH HERO BAR ══ */
+    .search-hero{
+      background:linear-gradient(135deg,var(--dark) 0%,#2A1845 55%,#132E22 100%);
+      padding:28px 0 0;
+      position:relative;overflow:hidden;
+    }
+    .search-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(233,30,140,.16),transparent 70%);pointer-events:none}
+    .search-hero::after{content:'';position:absolute;bottom:-50px;left:-40px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(27,140,94,.12),transparent 70%);pointer-events:none}
+    .hero-heading{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;color:#fff;margin-bottom:.3rem}
+    .hero-sub-text{font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:1.2rem}
+
+    /* Main search bar */
+    .main-search-bar{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:var(--radius-lg);
+      padding:.7rem 1rem;
+      display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;
+      backdrop-filter:blur(8px);
+      margin-bottom:1.2rem;
+    }
+    .msb-field{display:flex;flex-direction:column;flex:1;min-width:110px}
+    .msb-label{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem}
+    .msb-select{background:transparent;border:none;color:#fff;font-size:.88rem;font-weight:600;outline:none;cursor:pointer;font-family:'DM Sans',sans-serif;-webkit-appearance:none}
+    .msb-select option{background:#2A1845;color:#fff}
+    .msb-divider{width:1px;height:36px;background:rgba(255,255,255,.15);flex-shrink:0}
+    .msb-search-btn{background:linear-gradient(135deg,var(--pink),var(--pink-light));border:none;color:#fff;border-radius:12px;padding:.65rem 1.6rem;font-weight:700;font-size:.9rem;cursor:pointer;white-space:nowrap;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(233,30,140,.3)}
+    .msb-search-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(233,30,140,.4)}
+
+    /* Quick filter chips in hero */
+    .quick-chips{display:flex;flex-wrap:wrap;gap:.5rem;padding-bottom:1.2rem}
+    .qchip{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);font-size:.75rem;font-weight:600;padding:.3rem .85rem;border-radius:50px;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .qchip:hover,.qchip.active{background:rgba(233,30,140,.25);border-color:rgba(233,30,140,.5);color:#fff}
+    .qchip.active .qchip-dot{background:var(--pink-light)}
+    .qchip-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35)}
+
+    /* ══ RESULTS BAR ══ */
+    .results-bar{
+      background:#fff;border-bottom:1px solid var(--border);
+      padding:.65rem 0;position:sticky;top:57px;z-index:90;
+    }
+    .results-count{font-size:.88rem;font-weight:600;color:var(--text)}
+    .results-count span{color:var(--pink);font-family:'Playfair Display',serif;font-size:1.05rem}
+
+    /* Active filter chips */
+    .active-chips{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+    .achip{display:inline-flex;align-items:center;gap:.4rem;background:var(--pink-pale);color:var(--pink);font-size:.75rem;font-weight:600;padding:.28rem .75rem;border-radius:50px;border:1px solid rgba(233,30,140,.2)}
+    .achip.green{background:var(--green-pale);color:var(--green);border-color:rgba(27,140,94,.2)}
+    .achip-close{cursor:pointer;font-size:.8rem;opacity:.6;transition:opacity .2s;background:none;border:none;color:inherit;padding:0;line-height:1}
+    .achip-close:hover{opacity:1}
+    .clear-all{font-size:.75rem;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;border:none;background:none;transition:color .2s}
+    .clear-all:hover{color:var(--pink)}
+
+    /* Sort & View toggle */
+    .sort-select{border:1.5px solid var(--border);border-radius:10px;font-size:.82rem;padding:.35rem .7rem;color:var(--text);background:#fff;cursor:pointer;font-weight:600;outline:none;transition:border .2s}
+    .sort-select:focus{border-color:var(--pink)}
+    .view-toggle{display:flex;border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
+    .vt-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:.95rem;transition:all .2s}
+    .vt-btn.active{background:var(--pink-pale);color:var(--pink)}
+
+    /* ══ LAYOUT ══ */
+    .page-wrap{padding:20px 0 80px}
+
+    /* ══ SIDEBAR FILTERS ══ */
+    .filter-sidebar{background:#fff;border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;position:sticky;top:110px;max-height:calc(100vh - 130px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+    .filter-sidebar::-webkit-scrollbar{width:4px}
+    .filter-sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+    .filter-header{background:linear-gradient(135deg,var(--dark),#2A1845);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between}
+    .filter-header-title{color:#fff;font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:.5rem}
+    .filter-reset-btn{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer;background:none;border:none;transition:color .2s}
+    .filter-reset-btn:hover{color:var(--pink-light)}
+
+    .filter-section{border-bottom:1px solid var(--border);padding:.9rem 1.2rem}
+    .filter-section:last-child{border-bottom:none}
+    .filter-section-title{font-size:.78rem;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.7rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+    .filter-section-title i{font-size:.7rem;color:var(--muted);transition:transform .25s}
+    .filter-section-title.collapsed i{transform:rotate(-90deg)}
+    .filter-body{transition:all .25s}
+
+    .filter-label{display:flex;align-items:center;gap:.55rem;font-size:.84rem;color:var(--text);cursor:pointer;margin-bottom:.45rem;padding:.22rem 0;border-radius:8px;transition:color .2s}
+    .filter-label:hover{color:var(--pink)}
+    .filter-label input[type=checkbox]{accent-color:var(--pink);width:15px;height:15px;cursor:pointer}
+    .filter-count{margin-left:auto;font-size:.7rem;font-weight:700;color:var(--muted);background:var(--bg);padding:.1rem .45rem;border-radius:50px}
+
+    /* Range slider */
+    .range-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+    .range-val{font-size:.78rem;font-weight:700;color:var(--pink);min-width:32px;text-align:center;background:var(--pink-pale);padding:.15rem .4rem;border-radius:6px}
+    input[type=range]{-webkit-appearance:none;flex:1;height:4px;border-radius:50px;background:linear-gradient(to right,var(--pink) 0%,var(--pink) var(--val,50%),#EDD7EA var(--val,50%),#EDD7EA 100%);outline:none;cursor:pointer}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--pink);box-shadow:0 2px 8px rgba(233,30,140,.35);cursor:pointer;transition:transform .15s}
+    input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+
+    /* Search within filter */
+    .filter-search{width:100%;border:1.5px solid #EDD7EA;border-radius:8px;padding:.38rem .7rem;font-size:.8rem;outline:none;font-family:'DM Sans',sans-serif;color:var(--text);transition:border .2s;margin-bottom:.6rem}
+    .filter-search:focus{border-color:var(--pink)}
+
+    /* ══ PROFILE CARDS ══ */
+    /* Grid view */
+    .profile-card-grid{
+      background:#fff;border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      overflow:hidden;
+      transition:transform .25s,box-shadow .25s;
+      position:relative;height:100%;
+    }
+    .profile-card-grid:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(233,30,140,.14)}
+
+    .card-img-wrap{
+      height:190px;
+      background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));
+      display:flex;align-items:center;justify-content:center;
+      font-size:5rem;position:relative;overflow:hidden;
+    }
+    .card-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(255,255,255,.85),transparent 50%)}
+    .card-badges{position:absolute;top:10px;left:10px;display:flex;gap:.35rem;z-index:1}
+    .cbadge{font-size:.67rem;font-weight:800;padding:.22rem .6rem;border-radius:50px;letter-spacing:.04em}
+    .cbadge-verified{background:var(--green);color:#fff}
+    .cbadge-premium{background:linear-gradient(135deg,#FFD700,#FFA000);color:#5A3700}
+    .cbadge-new{background:var(--pink);color:#fff}
+    .card-shortlist{position:absolute;top:10px;right:10px;z-index:1;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.85);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:.9rem;transition:all .2s;backdrop-filter:blur(4px)}
+    .card-shortlist:hover,.card-shortlist.active{color:var(--pink);background:#fff;box-shadow:0 2px 12px rgba(233,30,140,.2)}
+
+    .card-body-grid{padding:1.1rem}
+    .card-name{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .card-id{font-size:.7rem;color:var(--muted);margin-bottom:.4rem}
+    .card-meta-row{display:flex;flex-wrap:wrap;gap:.3rem .8rem;font-size:.78rem;color:var(--muted);margin-bottom:.65rem}
+    .card-meta-row span{display:flex;align-items:center;gap:.25rem}
+    .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.8rem}
+    .ctag{font-size:.7rem;font-weight:600;padding:.2rem .6rem;border-radius:50px}
+    .ctag-green{background:var(--green-pale);color:var(--green)}
+    .ctag-pink{background:var(--pink-pale);color:var(--pink)}
+    .ctag-purple{background:#EDE7F6;color:#6A1B9A}
+
+    .card-actions{display:flex;gap:.5rem}
+    .card-actions .btn-pink{flex:1;text-align:center;font-size:.78rem;padding:.45rem .5rem}
+    .card-actions .btn-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);background:transparent;cursor:pointer;color:var(--muted);font-size:.9rem;transition:all .2s;flex-shrink:0}
+    .card-actions .btn-icon:hover{border-color:var(--pink);color:var(--pink);background:var(--pink-pale)}
+
+    /* Match score badge on card */
+    .match-badge{position:absolute;bottom:185px;right:10px;z-index:2;background:linear-gradient(135deg,var(--pink),var(--green-light));color:#fff;font-size:.68rem;font-weight:800;padding:.22rem .55rem;border-radius:50px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+
+    /* List view card */
+    .profile-card-list{
+      background:#fff;border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      display:flex;align-items:stretch;
+      overflow:hidden;
+      transition:transform .2s,box-shadow .2s;
+      margin-bottom:1rem;
+      position:relative;
+    }
+    .profile-card-list:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(233,30,140,.12)}
+    .list-img{width:100px;flex-shrink:0;background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative}
+    .list-img-badge{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);white-space:nowrap}
+    .list-body{flex:1;padding:1rem 1.2rem;min-width:0}
+    .list-name{font-size:1.02rem;font-weight:700;color:var(--dark);margin-bottom:.15rem}
+    .list-meta{font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin-bottom:.5rem}
+    .list-meta span{display:flex;align-items:center;gap:.22rem}
+    .list-desc{font-size:.82rem;color:var(--text);line-height:1.55;margin-bottom:.6rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .list-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+    .list-actions{display:flex;flex-direction:column;gap:.5rem;justify-content:center;padding:.8rem;flex-shrink:0;border-left:1px solid var(--border)}
+    .list-match{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center}
+    .list-match-label{font-size:.62rem;color:var(--muted);font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:.05em;margin-top:-.2rem;margin-bottom:.5rem}
+
+    /* ══ PAGINATION ══ */
+    .pagination-wrap{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-top:2rem}
+    .pg-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--text);transition:all .2s}
+    .pg-btn:hover{border-color:var(--pink);color:var(--pink)}
+    .pg-btn.active{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(233,30,140,.3)}
+    .pg-btn.disabled{opacity:.4;cursor:default;pointer-events:none}
+
+    /* ══ EMPTY STATE ══ */
+    .empty-state{text-align:center;padding:4rem 2rem;background:#fff;border-radius:var(--radius-lg);border:1px solid var(--border)}
+    .empty-icon{font-size:4rem;margin-bottom:1rem}
+    .empty-title{font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+    .empty-sub{font-size:.88rem;color:var(--muted);max-width:340px;margin:0 auto 1.2rem}
+
+    /* ══ MOBILE FILTER DRAWER ══ */
+    .filter-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1050;backdrop-filter:blur(4px)}
+    .filter-drawer{position:fixed;left:0;top:0;bottom:0;width:300px;background:#fff;z-index:1060;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;box-shadow:4px 0 32px rgba(0,0,0,.18)}
+    .filter-drawer.open{transform:translateX(0)}
+    .filter-overlay.open{display:block}
+    .filter-drawer-close{position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.3rem;color:var(--muted);cursor:pointer;z-index:1}
+
+    /* Mobile filter trigger */
+    .mob-filter-btn{display:none;position:fixed;bottom:82px;left:16px;z-index:900;background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border:none;border-radius:50px;padding:.6rem 1.2rem;font-weight:700;font-size:.85rem;box-shadow:0 4px 20px rgba(233,30,140,.35);cursor:pointer;transition:transform .2s}
+    .mob-filter-btn:hover{transform:translateY(-2px)}
+    @media(max-width:991.98px){.mob-filter-btn{display:flex;align-items:center;gap:.4rem}}
+    @media(max-width:991.98px){.filter-sidebar-col{display:none}}
+
+    /* ══ SORT MOBILE ══ */
+    @media(max-width:575.98px){
+      .main-search-bar{gap:.4rem}
+      .msb-divider{display:none}
+      .results-bar .d-flex{flex-wrap:wrap;gap:.4rem}
+    }
+
+    /* ══ FOOTER ══ */
+    footer.desktop-footer{background:var(--dark);color:rgba(255,255,255,.38);padding:14px 0;text-align:center;font-size:.79rem}
+    @media(max-width:767.98px){footer.desktop-footer{display:none}}
+
+    /* ══ MOBILE STICKY NAV ══ */
+    .mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);z-index:1000;justify-content:space-around;align-items:center;padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(233,30,140,.1)}
+    @media(max-width:767.98px){.mobile-bottom-nav{display:flex}body{padding-bottom:74px}}
+    .mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:.15rem;flex:1;cursor:pointer;border-radius:14px;transition:all .22s;text-decoration:none!important}
+    .mob-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:box-shadow .25s,transform .22s}
+    .mob-label{font-size:.62rem;font-weight:700;letter-spacing:.04em;transition:color .22s}
+    .mob-nav-item.home .mob-icon{background:linear-gradient(135deg,#FDE8F4,#FFB3D9);color:var(--pink)}.mob-nav-item.home .mob-label{color:var(--pink)}
+    .mob-nav-item.profiles .mob-icon{background:linear-gradient(135deg,#E5F7F0,#B3EDD8);color:var(--green)}.mob-nav-item.profiles .mob-label{color:var(--green)}
+    .mob-nav-item.matches .mob-icon{background:linear-gradient(135deg,#FFF3E0,#FFD599);color:#E65100}.mob-nav-item.matches .mob-label{color:#E65100}
+    .mob-nav-item.account .mob-icon{background:linear-gradient(135deg,#EDE7F6,#C5B3E6);color:#6A1B9A}.mob-nav-item.account .mob-label{color:#6A1B9A}
+    .mob-nav-item.home:hover .mob-icon,.mob-nav-item.home.active .mob-icon{box-shadow:0 0 18px 7px rgba(233,30,140,.38);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.profiles:hover .mob-icon,.mob-nav-item.profiles.active .mob-icon{box-shadow:0 0 18px 7px rgba(27,140,94,.35);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.matches:hover .mob-icon,.mob-nav-item.matches.active .mob-icon{box-shadow:0 0 18px 7px rgba(230,81,0,.30);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.account:hover .mob-icon,.mob-nav-item.account.active .mob-icon{box-shadow:0 0 18px 7px rgba(106,27,154,.30);transform:translateY(-5px) scale(1.12)}
+
+    #backTop{position:fixed;bottom:88px;right:16px;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--green));color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;z-index:999;box-shadow:0 4px 16px rgba(233,30,140,.3)}
+    #backTop.visible{opacity:1;transform:translateY(0)}
+    @media(min-width:768px){#backTop{bottom:24px;right:20px}}
+
+    /* Card stagger animation */
+    @keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    .card-anim{animation:cardIn .4s ease both}
+
+    /* Skeleton loader */
+    .skeleton{background:linear-gradient(90deg,#F5EDF9 25%,#EDD7EA 50%,#F5EDF9 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .skel-card{height:320px;border-radius:var(--radius-lg);margin-bottom:1rem}
+  
+
+    /* ════ SHARED NAV/FOOTER CSS ════ */
+    .site-nav{background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:2px solid transparent;padding:.5rem 0;position:sticky;top:0;z-index:1000;transition:border-color .35s,box-shadow .35s}
+    .site-nav.scrolled{border-bottom-color:var(--pink);box-shadow:0 4px 22px rgba(233,30,140,.18)}
+    .nav-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;gap:.05rem;list-style:none;margin:0;padding:0}
+    .nav-menu a{font-size:.84rem;font-weight:500;color:var(--text);padding:.3rem .72rem;border-radius:8px;transition:background .18s,color .18s;white-space:nowrap}
+    .nav-menu a:hover,.nav-menu a.active{background:var(--pink-pale);color:var(--pink)}
+    .lang-btn{font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;border:1.5px solid #EDD7EA;border-radius:7px;padding:.26rem .6rem;transition:all .18s;background:transparent}
+    .lang-btn:hover,.lang-btn.active{border-color:var(--pink);color:var(--pink);background:var(--pink-pale)}
+    .nav-login-btn{border:1.5px solid var(--pink);color:var(--pink);border-radius:50px;padding:.28rem .95rem;font-weight:600;font-size:.8rem;background:transparent;cursor:pointer;transition:all .18s;white-space:nowrap}
+    .nav-login-btn:hover{background:var(--pink);color:#fff}
+    .nav-reg-btn{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border:none;border-radius:50px;padding:.3rem .95rem;font-weight:600;font-size:.8rem;cursor:pointer;transition:transform .18s,box-shadow .18s;box-shadow:0 3px 12px rgba(233,30,140,.25);white-space:nowrap}
+    .nav-reg-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(233,30,140,.32)}
+    .nav-notif-btn{position:relative;background:var(--pink-pale);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:.9rem;transition:background .18s;flex-shrink:0}
+    .nav-notif-btn:hover{background:var(--pink);color:#fff}
+    .notif-dot{position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:#FF3B3B;border:1.5px solid #fff}
+    /* Mobile sticky logo only */
+    .mob-nav-sticky{display:none;position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:2px solid transparent;padding:.45rem 0;text-align:center;transition:border-color .35s,box-shadow .35s}
+    .mob-nav-sticky.scrolled{border-bottom-color:var(--pink);box-shadow:0 3px 16px rgba(233,30,140,.15)}
+    /* Lang bar — NOT sticky */
+    .mob-lang-bar{display:none;justify-content:center;gap:.5rem;padding:.35rem 0;background:#fff;border-bottom:1px solid #F5EDF9}
+    @media(max-width:991.98px){.site-nav{display:none!important}.mob-nav-sticky{display:block}.mob-lang-bar{display:flex}}
+    @media(min-width:992px){.mob-nav-sticky,.mob-lang-bar{display:none!important}}
+    /* Desktop footer */
+    .desktop-footer{background:var(--dark);padding:18px 0 14px}
+    @media(max-width:767.98px){.desktop-footer{display:none}}
+    .footer-nav-links{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:.55rem}
+    .footer-nav-links a{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.5);padding:0 1.4rem;transition:color .18s}
+    .footer-nav-links a:hover{color:var(--pink-light)}
+    .footer-nav-links a+a{border-left:1px solid rgba(255,255,255,.12)}
+    .footer-copy{font-size:.74rem;color:rgba(255,255,255,.28);text-align:center}
+    /* Mobile bottom nav */
+    .mob-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid #F0E6F6;z-index:1100;justify-content:space-around;align-items:center;padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(233,30,140,.1)}
+    @media(max-width:767.98px){.mob-bottom-nav{display:flex}body{padding-bottom:72px}}
+    .mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:.14rem;flex:1;cursor:pointer;border-radius:14px;transition:all .22s;text-decoration:none!important;border:none;background:transparent}
+    .mob-nav-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;transition:box-shadow .25s,transform .22s}
+    .mob-nav-label{font-size:.6rem;font-weight:700;letter-spacing:.04em;transition:color .22s}
+    .mob-nav-item.n-home .mob-nav-icon{background:linear-gradient(135deg,#FDE8F4,#FFB3D9);color:var(--pink)}.mob-nav-item.n-home .mob-nav-label{color:var(--pink)}
+    .mob-nav-item.n-profiles .mob-nav-icon{background:linear-gradient(135deg,#E5F7F0,#B3EDD8);color:var(--green)}.mob-nav-item.n-profiles .mob-nav-label{color:var(--green)}
+    .mob-nav-item.n-matches .mob-nav-icon{background:linear-gradient(135deg,#FFF3E0,#FFD599);color:#E65100}.mob-nav-item.n-matches .mob-nav-label{color:#E65100}
+    .mob-nav-item.n-account .mob-nav-icon{background:linear-gradient(135deg,#EDE7F6,#C5B3E6);color:#6A1B9A}.mob-nav-item.n-account .mob-nav-label{color:#6A1B9A}
+    .mob-nav-item.n-home:hover .mob-nav-icon,.mob-nav-item.n-home.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(233,30,140,.36);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.n-profiles:hover .mob-nav-icon,.mob-nav-item.n-profiles.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(27,140,94,.33);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.n-matches:hover .mob-nav-icon,.mob-nav-item.n-matches.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(230,81,0,.28);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.n-account:hover .mob-nav-icon,.mob-nav-item.n-account.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(106,27,154,.28);transform:translateY(-5px) scale(1.12)}
+    /* Account drawer */
+    .acct-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1200;backdrop-filter:blur(4px)}
+    .acct-overlay.open{display:block}
+    .acct-drawer{position:fixed;bottom:0;left:0;right:0;background:#fff;z-index:1210;border-radius:22px 22px 0 0;transform:translateY(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);padding:0 0 calc(20px + env(safe-area-inset-bottom));box-shadow:0 -8px 40px rgba(233,30,140,.14)}
+    .acct-drawer.open{transform:translateY(0)}
+    .acct-drawer-handle{width:40px;height:4px;background:#EDD7EA;border-radius:4px;margin:12px auto 8px}
+    .acct-drawer-header{display:flex;align-items:center;gap:.9rem;padding:.7rem 1.2rem 1rem;border-bottom:1px solid #F5EDF9}
+    .acct-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));display:flex;align-items:center;justify-content:center;font-size:1.6rem;border:2px solid var(--pink-pale)}
+    .acct-name{font-weight:700;font-size:.95rem;color:var(--dark)}
+    .acct-id{font-size:.72rem;color:var(--muted)}
+    .acct-menu-item{display:flex;align-items:center;gap:.85rem;padding:.7rem 1.4rem;font-size:.9rem;font-weight:500;color:var(--text);transition:background .15s;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;text-decoration:none}
+    .acct-menu-item:hover{background:var(--pink-pale)}
+    .acct-menu-item i{font-size:1.05rem;width:22px;text-align:center}
+    .acct-menu-item.danger{color:#C62828}
+    .acct-menu-item.danger:hover{background:#FFF0F0}
+    #backTop{position:fixed;bottom:88px;right:16px;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--green));color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;z-index:999;box-shadow:0 4px 16px rgba(233,30,140,.3)}
+    #backTop.visible{opacity:1;transform:translateY(0)}
+    @media(min-width:768px){#backTop{bottom:24px;right:22px}}
+
+  </style>
+</head>
+<body>
+
+<!-- ════════ DESKTOP NAVBAR ════════ -->
+<nav class="site-nav" id="mainNav">
+  <div class="container d-flex align-items-center gap-3">
+    <a class="nav-brand me-2" href="index.html">💍 Namma Matrimony</a>
+    <ul class="nav-menu me-auto">
+      <li><a href="index.html" class="">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="search.html" class="active">Profiles</a></li>
+      <li><a href="#matches">Matches</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="d-flex align-items-center gap-2">
+      <button class="lang-btn active" onclick="switchLang(this,'en')">EN</button>
+      <button class="lang-btn" onclick="switchLang(this,'ta')">த</button>
+      <div id="desktopLoggedOut" class="d-flex align-items-center gap-2">
+        <button class="nav-login-btn" onclick="simulateLogin()">Login</button>
+        <button class="nav-reg-btn">Register Free</button>
+      </div>
+      <div id="desktopLoggedIn" class="d-flex align-items-center gap-2" style="display:none!important">
+        <button class="nav-notif-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></button>
+        <button class="nav-login-btn" onclick="simulateLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Mobile: sticky logo only -->
+<div class="mob-nav-sticky" id="mobNavSticky">
+  <a class="nav-brand" href="index.html" style="font-size:1.15rem;">💍 Namma Matrimony</a>
+</div>
+<!-- Lang bar: NOT sticky, scrolls with page -->
+<div class="mob-lang-bar">
+  <button class="lang-btn active" onclick="switchLang(this,'en')">EN</button>
+  <button class="lang-btn" onclick="switchLang(this,'ta')">த</button>
+</div>
+
+<!-- ════════ SEARCH HERO ════════ -->
+<section class="search-hero">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h1 class="hero-heading">Browse Profiles</h1>
+        <p class="hero-sub-text">Find your perfect match from <strong style="color:var(--pink-light);">25,000+</strong> verified Tamil profiles</p>
+      </div>
+    </div>
+
+    <!-- Main search bar -->
+    <div class="main-search-bar">
+      <div class="msb-field">
+        <span class="msb-label">Looking for</span>
+        <select class="msb-select" id="lookingFor">
+          <option>Bride</option>
+          <option>Groom</option>
+        </select>
+      </div>
+      <div class="msb-divider"></div>
+      <div class="msb-field">
+        <span class="msb-label">Age Range</span>
+        <select class="msb-select">
+          <option>21 – 30 yrs</option>
+          <option>25 – 35 yrs</option>
+          <option>30 – 40 yrs</option>
+          <option>Any Age</option>
+        </select>
+      </div>
+      <div class="msb-divider"></div>
+      <div class="msb-field">
+        <span class="msb-label">Religion</span>
+        <select class="msb-select">
+          <option>Hindu</option>
+          <option>Christian</option>
+          <option>Muslim</option>
+          <option>Any</option>
+        </select>
+      </div>
+      <div class="msb-divider"></div>
+      <div class="msb-field">
+        <span class="msb-label">Location</span>
+        <select class="msb-select">
+          <option>Tamil Nadu</option>
+          <option>Chennai</option>
+          <option>Coimbatore</option>
+          <option>Any Location</option>
+        </select>
+      </div>
+      <button class="msb-search-btn" onclick="runSearch()">
+        <i class="bi bi-search me-1"></i>Search
+      </button>
+    </div>
+
+    <!-- Quick filter chips -->
+    <div class="quick-chips">
+      <div class="qchip active" onclick="toggleChip(this)"><span class="qchip-dot"></span>All Profiles</div>
+      <div class="qchip" onclick="toggleChip(this)"><span class="qchip-dot"></span>Daily Recommendations</div>
+      <div class="qchip" onclick="toggleChip(this)"><span class="qchip-dot"></span>Recently Joined</div>
+      <div class="qchip" onclick="toggleChip(this)"><span class="qchip-dot"></span>Near Me</div>
+      <div class="qchip" onclick="toggleChip(this)"><span class="qchip-dot"></span>Profile ID Search</div>
+      <div class="qchip" onclick="toggleChip(this)"><span class="qchip-dot"></span>With Photo</div>
+      <div class="qchip" onclick="toggleChip(this)"><span class="qchip-dot"></span>Premium Members</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RESULTS BAR ════════ -->
+<div class="results-bar" id="resultsBar">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between gap-2 flex-wrap">
+      <!-- Count + active chips -->
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <div class="results-count">Showing <span id="resultCount">1,248</span> profiles</div>
+        <div class="active-chips" id="activeChips">
+          <div class="achip">Hindu <button class="achip-close" onclick="removeChip(this)">✕</button></div>
+          <div class="achip green">Tamil Nadu <button class="achip-close" onclick="removeChip(this)">✕</button></div>
+          <div class="achip">21–30 yrs <button class="achip-close" onclick="removeChip(this)">✕</button></div>
+          <button class="clear-all" onclick="clearAllChips()">Clear all</button>
+        </div>
+      </div>
+      <!-- Sort + view toggle -->
+      <div class="d-flex align-items-center gap-2">
+        <select class="sort-select" onchange="sortProfiles(this.value)">
+          <option value="relevance">Sort: Relevance</option>
+          <option value="newest">Newest First</option>
+          <option value="age_asc">Age: Low → High</option>
+          <option value="age_desc">Age: High → Low</option>
+          <option value="match">Best Match</option>
+          <option value="activity">Last Active</option>
+        </select>
+        <div class="view-toggle">
+          <button class="vt-btn active" id="gridViewBtn" onclick="setView('grid',this)" title="Grid View"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+          <button class="vt-btn" id="listViewBtn" onclick="setView('list',this)" title="List View"><i class="bi bi-list-ul"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PAGE CONTENT ════════ -->
+<div class="page-wrap">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- ── FILTER SIDEBAR (desktop) ── -->
+      <div class="col-lg-3 filter-sidebar-col">
+        <div class="filter-sidebar">
+          <div class="filter-header">
+            <div class="filter-header-title"><i class="bi bi-sliders me-1"></i>Filters</div>
+            <button class="filter-reset-btn" onclick="resetAllFilters()">Reset All</button>
+          </div>
+
+          <!-- Gender -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Looking For <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="radio" name="gender" checked style="accent-color:var(--pink)"/>Bride</label>
+              <label class="filter-label"><input type="radio" name="gender" style="accent-color:var(--pink)"/>Groom</label>
+            </div>
+          </div>
+
+          <!-- Age Range -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Age Range <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <div class="range-row">
+                <span style="font-size:.75rem;color:var(--muted);min-width:20px;">Min</span>
+                <input type="range" min="18" max="60" value="21" oninput="updateRange('ageMin',this.value)" id="ageMinSlider" style="--val:18%"/>
+                <span class="range-val" id="ageMin">21</span>
+              </div>
+              <div class="range-row">
+                <span style="font-size:.75rem;color:var(--muted);min-width:20px;">Max</span>
+                <input type="range" min="18" max="60" value="35" oninput="updateRange('ageMax',this.value)" id="ageMaxSlider" style="--val:40%"/>
+                <span class="range-val" id="ageMax">35</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Height -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Height <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <div class="range-row">
+                <span style="font-size:.75rem;color:var(--muted);min-width:20px;">Min</span>
+                <input type="range" min="148" max="198" value="155" oninput="updateHeightRange('heightMin',this.value)" style="--val:20%"/>
+                <span class="range-val" id="heightMin">5'1"</span>
+              </div>
+              <div class="range-row">
+                <span style="font-size:.75rem;color:var(--muted);min-width:20px;">Max</span>
+                <input type="range" min="148" max="198" value="178" oninput="updateHeightRange('heightMax',this.value)" style="--val:70%"/>
+                <span class="range-val" id="heightMax">5'10"</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Religion -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Religion <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox" checked/> Hindu <span class="filter-count">1,104</span></label>
+              <label class="filter-label"><input type="checkbox"/> Christian <span class="filter-count">98</span></label>
+              <label class="filter-label"><input type="checkbox"/> Muslim <span class="filter-count">46</span></label>
+            </div>
+          </div>
+
+          <!-- Caste -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Caste <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <input type="text" class="filter-search" placeholder="Search caste…" oninput="filterCasteList(this.value)"/>
+              <div id="casteList">
+                <label class="filter-label"><input type="checkbox" checked/> Iyer <span class="filter-count">312</span></label>
+                <label class="filter-label"><input type="checkbox"/> Iyengar <span class="filter-count">218</span></label>
+                <label class="filter-label"><input type="checkbox"/> Vellalar <span class="filter-count">196</span></label>
+                <label class="filter-label"><input type="checkbox"/> Nadar <span class="filter-count">142</span></label>
+                <label class="filter-label"><input type="checkbox"/> Mudaliar <span class="filter-count">118</span></label>
+                <label class="filter-label"><input type="checkbox"/> Pillai <span class="filter-count">94</span></label>
+                <label class="filter-label"><input type="checkbox"/> Chettiar <span class="filter-count">87</span></label>
+                <label class="filter-label"><input type="checkbox"/> Gounder <span class="filter-count">76</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Education <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox" checked/> Post Graduate <span class="filter-count">424</span></label>
+              <label class="filter-label"><input type="checkbox" checked/> Graduate <span class="filter-count">618</span></label>
+              <label class="filter-label"><input type="checkbox"/> Diploma <span class="filter-count">87</span></label>
+              <label class="filter-label"><input type="checkbox"/> SSLC / HSC <span class="filter-count">119</span></label>
+            </div>
+          </div>
+
+          <!-- Profession -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Profession <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox"/> Software / IT <span class="filter-count">342</span></label>
+              <label class="filter-label"><input type="checkbox"/> Doctor / Medical <span class="filter-count">168</span></label>
+              <label class="filter-label"><input type="checkbox"/> Government <span class="filter-count">214</span></label>
+              <label class="filter-label"><input type="checkbox"/> Business / Self-Employed <span class="filter-count">198</span></label>
+              <label class="filter-label"><input type="checkbox"/> Teacher / Professor <span class="filter-count">124</span></label>
+              <label class="filter-label"><input type="checkbox"/> Engineer (Non-IT) <span class="filter-count">112</span></label>
+              <label class="filter-label"><input type="checkbox"/> CA / Finance <span class="filter-count">90</span></label>
+            </div>
+          </div>
+
+          <!-- Income -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Annual Income <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox"/> Below ₹3 LPA <span class="filter-count">89</span></label>
+              <label class="filter-label"><input type="checkbox" checked/> ₹3 – 6 LPA <span class="filter-count">312</span></label>
+              <label class="filter-label"><input type="checkbox" checked/> ₹6 – 12 LPA <span class="filter-count">428</span></label>
+              <label class="filter-label"><input type="checkbox"/> ₹12 – 25 LPA <span class="filter-count">218</span></label>
+              <label class="filter-label"><input type="checkbox"/> Above ₹25 LPA <span class="filter-count">87</span></label>
+            </div>
+          </div>
+
+          <!-- Marital Status -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Marital Status <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox" checked/> Never Married <span class="filter-count">1,048</span></label>
+              <label class="filter-label"><input type="checkbox"/> Divorced <span class="filter-count">142</span></label>
+              <label class="filter-label"><input type="checkbox"/> Widowed <span class="filter-count">58</span></label>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Location <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <input type="text" class="filter-search" placeholder="Search city / district…"/>
+              <label class="filter-label"><input type="checkbox" checked/> Chennai <span class="filter-count">348</span></label>
+              <label class="filter-label"><input type="checkbox" checked/> Coimbatore <span class="filter-count">214</span></label>
+              <label class="filter-label"><input type="checkbox"/> Madurai <span class="filter-count">178</span></label>
+              <label class="filter-label"><input type="checkbox"/> Trichy <span class="filter-count">142</span></label>
+              <label class="filter-label"><input type="checkbox"/> Salem <span class="filter-count">118</span></label>
+              <label class="filter-label"><input type="checkbox"/> Tirunelveli <span class="filter-count">98</span></label>
+              <label class="filter-label"><input type="checkbox"/> Abroad (NRI) <span class="filter-count">94</span></label>
+            </div>
+          </div>
+
+          <!-- Dhosam -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Dhosam <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox" checked/> No Dhosam <span class="filter-count">948</span></label>
+              <label class="filter-label"><input type="checkbox"/> Chevvai Dhosam <span class="filter-count">198</span></label>
+              <label class="filter-label"><input type="checkbox"/> Doesn't Matter <span class="filter-count">102</span></label>
+            </div>
+          </div>
+
+          <!-- Photo / Verify -->
+          <div class="filter-section">
+            <div class="filter-section-title" onclick="toggleSection(this)">Profile Type <i class="bi bi-chevron-down"></i></div>
+            <div class="filter-body">
+              <label class="filter-label"><input type="checkbox" checked/> With Photo <span class="filter-count">1,048</span></label>
+              <label class="filter-label"><input type="checkbox" checked/> Verified Only <span class="filter-count">842</span></label>
+              <label class="filter-label"><input type="checkbox"/> Premium Profiles <span class="filter-count">312</span></label>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <button class="btn-pink w-100 text-center" onclick="applyFilters()"><i class="bi bi-check2 me-1"></i>Apply Filters</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROFILE RESULTS ── -->
+      <div class="col-lg-9">
+
+        <!-- GRID VIEW -->
+        <div id="gridView">
+          <div class="row g-3" id="profileGrid">
+
+            <!-- Card 1 -->
+            <div class="col-sm-6 col-xl-4 card-anim" style="animation-delay:.05s">
+              <div class="profile-card-grid">
+                <div class="card-img-wrap">👩
+                  <div class="card-badges">
+                    <span class="cbadge cbadge-verified">✔ Verified</span>
+                    <span class="cbadge cbadge-premium">⭐</span>
+                  </div>
+                  <button class="card-shortlist" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+                </div>
+                <div class="match-badge">💚 87% Match</div>
+                <div class="card-body-grid">
+                  <div class="card-name">Priya Ramasubramanian</div>
+                  <div class="card-id">NM-2024-08731</div>
+                  <div class="card-meta-row">
+                    <span><i class="bi bi-calendar3"></i> 26 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'4"</span>
+                    <span><i class="bi bi-geo-alt"></i> Chennai</span>
+                    <span><i class="bi bi-briefcase"></i> Software Engr.</span>
+                  </div>
+                  <div class="card-tags">
+                    <span class="ctag ctag-green">Iyer</span>
+                    <span class="ctag ctag-pink">B.Tech – IIT</span>
+                    <span class="ctag ctag-purple">No Dhosam</span>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-pink" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+                    <button class="card-actions btn-icon" title="View Profile" onclick="viewProfile()"><i class="bi bi-eye"></i></button>
+                    <button class="card-actions btn-icon" title="Chat" onclick="openChat()"><i class="bi bi-chat-dots"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-sm-6 col-xl-4 card-anim" style="animation-delay:.10s">
+              <div class="profile-card-grid">
+                <div class="card-img-wrap" style="background:linear-gradient(135deg,var(--green-pale),var(--pink-pale));">👩
+                  <div class="card-badges"><span class="cbadge cbadge-verified">✔ Verified</span><span class="cbadge cbadge-new">🆕 New</span></div>
+                  <button class="card-shortlist" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+                </div>
+                <div class="match-badge">💚 81% Match</div>
+                <div class="card-body-grid">
+                  <div class="card-name">Deepa Subramaniam</div>
+                  <div class="card-id">NM-2025-01024</div>
+                  <div class="card-meta-row">
+                    <span><i class="bi bi-calendar3"></i> 24 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'2"</span>
+                    <span><i class="bi bi-geo-alt"></i> Madurai</span>
+                    <span><i class="bi bi-briefcase"></i> Teacher</span>
+                  </div>
+                  <div class="card-tags">
+                    <span class="ctag ctag-green">Iyengar</span>
+                    <span class="ctag ctag-pink">M.Ed.</span>
+                    <span class="ctag ctag-purple">Mithuna Rasi</span>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-pink" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+                    <button class="card-actions btn-icon" onclick="viewProfile()"><i class="bi bi-eye"></i></button>
+                    <button class="card-actions btn-icon" onclick="openChat()"><i class="bi bi-chat-dots"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-sm-6 col-xl-4 card-anim" style="animation-delay:.15s">
+              <div class="profile-card-grid">
+                <div class="card-img-wrap" style="background:linear-gradient(135deg,#EDE7F6,var(--pink-pale));">👩
+                  <div class="card-badges"><span class="cbadge cbadge-verified">✔ Verified</span></div>
+                  <button class="card-shortlist active" onclick="toggleShortlist(this)"><i class="bi bi-bookmark-fill"></i></button>
+                </div>
+                <div class="match-badge">💚 79% Match</div>
+                <div class="card-body-grid">
+                  <div class="card-name">Anitha Krishnamurthy</div>
+                  <div class="card-id">NM-2024-06541</div>
+                  <div class="card-meta-row">
+                    <span><i class="bi bi-calendar3"></i> 25 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'3"</span>
+                    <span><i class="bi bi-geo-alt"></i> Coimbatore</span>
+                    <span><i class="bi bi-briefcase"></i> Doctor</span>
+                  </div>
+                  <div class="card-tags">
+                    <span class="ctag ctag-green">Iyer</span>
+                    <span class="ctag ctag-pink">MBBS</span>
+                    <span class="ctag ctag-purple">No Dhosam</span>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-pink" onclick="sendInterest(this)" style="background:linear-gradient(135deg,var(--green),var(--green-light));box-shadow:none;" disabled><i class="bi bi-heart-fill me-1"></i>Sent</button>
+                    <button class="card-actions btn-icon" onclick="viewProfile()"><i class="bi bi-eye"></i></button>
+                    <button class="card-actions btn-icon" onclick="openChat()"><i class="bi bi-chat-dots"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-sm-6 col-xl-4 card-anim" style="animation-delay:.20s">
+              <div class="profile-card-grid">
+                <div class="card-img-wrap" style="background:linear-gradient(135deg,var(--pink-pale),#EDE7F6);">👩
+                  <div class="card-badges"><span class="cbadge cbadge-premium">⭐ Premium</span></div>
+                  <button class="card-shortlist" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+                </div>
+                <div class="match-badge">💚 75% Match</div>
+                <div class="card-body-grid">
+                  <div class="card-name">Kavitha Muthukumar</div>
+                  <div class="card-id">NM-2024-04231</div>
+                  <div class="card-meta-row">
+                    <span><i class="bi bi-calendar3"></i> 27 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'5"</span>
+                    <span><i class="bi bi-geo-alt"></i> Salem</span>
+                    <span><i class="bi bi-briefcase"></i> CA</span>
+                  </div>
+                  <div class="card-tags">
+                    <span class="ctag ctag-green">Vellalar</span>
+                    <span class="ctag ctag-pink">MBA Finance</span>
+                    <span class="ctag ctag-purple">Rishabha Rasi</span>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-pink" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+                    <button class="card-actions btn-icon" onclick="viewProfile()"><i class="bi bi-eye"></i></button>
+                    <button class="card-actions btn-icon" onclick="openChat()"><i class="bi bi-chat-dots"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-sm-6 col-xl-4 card-anim" style="animation-delay:.25s">
+              <div class="profile-card-grid">
+                <div class="card-img-wrap" style="background:linear-gradient(135deg,var(--green-pale),#EDE7F6);">👩
+                  <div class="card-badges"><span class="cbadge cbadge-verified">✔ Verified</span></div>
+                  <button class="card-shortlist" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+                </div>
+                <div class="match-badge" style="background:linear-gradient(135deg,var(--green),var(--green-light));">💛 68% Match</div>
+                <div class="card-body-grid">
+                  <div class="card-name">Meena Balakrishnan</div>
+                  <div class="card-id">NM-2025-00341</div>
+                  <div class="card-meta-row">
+                    <span><i class="bi bi-calendar3"></i> 23 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'1"</span>
+                    <span><i class="bi bi-geo-alt"></i> Trichy</span>
+                    <span><i class="bi bi-briefcase"></i> Nurse</span>
+                  </div>
+                  <div class="card-tags">
+                    <span class="ctag ctag-green">Nadar</span>
+                    <span class="ctag ctag-pink">B.Sc Nursing</span>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-pink" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+                    <button class="card-actions btn-icon" onclick="viewProfile()"><i class="bi bi-eye"></i></button>
+                    <button class="card-actions btn-icon" onclick="openChat()"><i class="bi bi-chat-dots"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-sm-6 col-xl-4 card-anim" style="animation-delay:.30s">
+              <div class="profile-card-grid">
+                <div class="card-img-wrap" style="background:linear-gradient(135deg,#FFF3E0,var(--pink-pale));">👩
+                  <div class="card-badges"><span class="cbadge cbadge-verified">✔ Verified</span><span class="cbadge cbadge-premium">⭐</span></div>
+                  <button class="card-shortlist" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+                </div>
+                <div class="match-badge">💚 83% Match</div>
+                <div class="card-body-grid">
+                  <div class="card-name">Saranya Venkataraman</div>
+                  <div class="card-id">NM-2024-07892</div>
+                  <div class="card-meta-row">
+                    <span><i class="bi bi-calendar3"></i> 28 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'4"</span>
+                    <span><i class="bi bi-geo-alt"></i> Chennai</span>
+                    <span><i class="bi bi-briefcase"></i> Architect</span>
+                  </div>
+                  <div class="card-tags">
+                    <span class="ctag ctag-green">Iyer</span>
+                    <span class="ctag ctag-pink">B.Arch</span>
+                    <span class="ctag ctag-purple">Kanya Rasi</span>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn-pink" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+                    <button class="card-actions btn-icon" onclick="viewProfile()"><i class="bi bi-eye"></i></button>
+                    <button class="card-actions btn-icon" onclick="openChat()"><i class="bi bi-chat-dots"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /profileGrid -->
+        </div><!-- /gridView -->
+
+        <!-- LIST VIEW (hidden by default) -->
+        <div id="listView" style="display:none;">
+
+          <div class="profile-card-list card-anim">
+            <div class="list-img" style="background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));">👩
+              <div class="list-img-badge"><span class="cbadge cbadge-verified" style="font-size:.62rem;">✔</span></div>
+            </div>
+            <div class="list-body">
+              <div class="d-flex align-items-start justify-content-between gap-2 flex-wrap">
+                <div>
+                  <div class="list-name">Priya Ramasubramanian <span style="font-size:.72rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">NM-2024-08731</span></div>
+                  <div class="list-meta">
+                    <span><i class="bi bi-calendar3"></i> 26 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'4"</span>
+                    <span><i class="bi bi-geo-alt"></i> Chennai</span>
+                    <span><i class="bi bi-briefcase"></i> Software Engineer</span>
+                    <span><i class="bi bi-mortarboard"></i> B.Tech – IIT Madras</span>
+                  </div>
+                </div>
+                <button class="card-shortlist" style="position:static;width:30px;height:30px;flex-shrink:0;" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <div class="list-desc">Cheerful, family-oriented Software Engineer. Enjoys classical music, cooking and travelling. Looking for a kind, well-settled partner who values family and culture.</div>
+              <div class="list-tags">
+                <span class="ctag ctag-green">Iyer</span>
+                <span class="ctag ctag-pink">Hindu</span>
+                <span class="ctag ctag-purple">No Dhosam</span>
+                <span class="ctag ctag-green">Mithuna Rasi</span>
+              </div>
+            </div>
+            <div class="list-actions">
+              <div class="list-match">87%</div>
+              <div class="list-match-label">Match</div>
+              <button class="btn-pink mb-1" style="font-size:.78rem;padding:.4rem .8rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+              <button class="btn-green" style="font-size:.78rem;padding:.4rem .8rem;" onclick="viewProfile()"><i class="bi bi-eye me-1"></i>View</button>
+            </div>
+          </div>
+
+          <div class="profile-card-list card-anim" style="animation-delay:.08s">
+            <div class="list-img" style="background:linear-gradient(135deg,var(--green-pale),#EDE7F6);">👩
+              <div class="list-img-badge"><span class="cbadge cbadge-new" style="font-size:.62rem;">New</span></div>
+            </div>
+            <div class="list-body">
+              <div class="d-flex align-items-start justify-content-between gap-2 flex-wrap">
+                <div>
+                  <div class="list-name">Deepa Subramaniam <span style="font-size:.72rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">NM-2025-01024</span></div>
+                  <div class="list-meta">
+                    <span><i class="bi bi-calendar3"></i> 24 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'2"</span>
+                    <span><i class="bi bi-geo-alt"></i> Madurai</span>
+                    <span><i class="bi bi-briefcase"></i> Teacher</span>
+                    <span><i class="bi bi-mortarboard"></i> M.Ed.</span>
+                  </div>
+                </div>
+                <button class="card-shortlist" style="position:static;width:30px;height:30px;flex-shrink:0;" onclick="toggleShortlist(this)"><i class="bi bi-bookmark"></i></button>
+              </div>
+              <div class="list-desc">Passionate educator with a love for children and learning. Deeply rooted in Tamil culture. Seeking a caring and responsible life partner from a good family background.</div>
+              <div class="list-tags">
+                <span class="ctag ctag-green">Iyengar</span>
+                <span class="ctag ctag-pink">Hindu</span>
+                <span class="ctag ctag-purple">Mithuna Rasi</span>
+              </div>
+            </div>
+            <div class="list-actions">
+              <div class="list-match">81%</div>
+              <div class="list-match-label">Match</div>
+              <button class="btn-pink mb-1" style="font-size:.78rem;padding:.4rem .8rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+              <button class="btn-green" style="font-size:.78rem;padding:.4rem .8rem;" onclick="viewProfile()"><i class="bi bi-eye me-1"></i>View</button>
+            </div>
+          </div>
+
+          <div class="profile-card-list card-anim" style="animation-delay:.16s">
+            <div class="list-img" style="background:linear-gradient(135deg,var(--pink-pale),#FFF3E0);">👩
+              <div class="list-img-badge"><span class="cbadge cbadge-premium" style="font-size:.62rem;">⭐</span></div>
+            </div>
+            <div class="list-body">
+              <div class="d-flex align-items-start justify-content-between gap-2 flex-wrap">
+                <div>
+                  <div class="list-name">Saranya Venkataraman <span style="font-size:.72rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">NM-2024-07892</span></div>
+                  <div class="list-meta">
+                    <span><i class="bi bi-calendar3"></i> 28 yrs</span>
+                    <span><i class="bi bi-rulers"></i> 5'4"</span>
+                    <span><i class="bi bi-geo-alt"></i> Chennai</span>
+                    <span><i class="bi bi-briefcase"></i> Architect</span>
+                    <span><i class="bi bi-mortarboard"></i> B.Arch</span>
+                  </div>
+                </div>
+                <button class="card-shortlist active" style="position:static;width:30px;height:30px;flex-shrink:0;" onclick="toggleShortlist(this)"><i class="bi bi-bookmark-fill"></i></button>
+              </div>
+              <div class="list-desc">Creative architect working in Chennai. Loves design, art and reading. Traditional yet modern in outlook. Looking for a supportive and understanding life partner.</div>
+              <div class="list-tags">
+                <span class="ctag ctag-green">Iyer</span>
+                <span class="ctag ctag-pink">Hindu</span>
+                <span class="ctag ctag-purple">Kanya Rasi</span>
+                <span class="ctag ctag-green">No Dhosam</span>
+              </div>
+            </div>
+            <div class="list-actions">
+              <div class="list-match">83%</div>
+              <div class="list-match-label">Match</div>
+              <button class="btn-pink mb-1" style="font-size:.78rem;padding:.4rem .8rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button>
+              <button class="btn-green" style="font-size:.78rem;padding:.4rem .8rem;" onclick="viewProfile()"><i class="bi bi-eye me-1"></i>View</button>
+            </div>
+          </div>
+
+        </div><!-- /listView -->
+
+        <!-- PAGINATION -->
+        <div class="pagination-wrap">
+          <button class="pg-btn disabled"><i class="bi bi-chevron-left"></i></button>
+          <button class="pg-btn active">1</button>
+          <button class="pg-btn" onclick="goPage(this)">2</button>
+          <button class="pg-btn" onclick="goPage(this)">3</button>
+          <button class="pg-btn" onclick="goPage(this)">4</button>
+          <button class="pg-btn" onclick="goPage(this)">5</button>
+          <button class="pg-btn" style="width:auto;padding:0 .7rem;">…</button>
+          <button class="pg-btn" onclick="goPage(this)">52</button>
+          <button class="pg-btn" onclick="goPage(this)"><i class="bi bi-chevron-right"></i></button>
+        </div>
+
+      </div><!-- /col-lg-9 -->
+    </div>
+  </div>
+</div>
+<!-- ════════ MOBILE FILTER OVERLAY & DRAWER ════════ -->
+<div class="filter-overlay" id="filterOverlay" onclick="closeFilterDrawer()"></div>
+<div class="filter-drawer" id="filterDrawer">
+  <button class="filter-drawer-close" onclick="closeFilterDrawer()"><i class="bi bi-x-lg"></i></button>
+  <div class="filter-header">
+    <div class="filter-header-title"><i class="bi bi-sliders me-1"></i>Filters</div>
+    <button class="filter-reset-btn" onclick="resetAllFilters()">Reset All</button>
+  </div>
+  <!-- same filter content reused -->
+  <div class="filter-section">
+    <div class="filter-section-title" onclick="toggleSection(this)">Age Range <i class="bi bi-chevron-down"></i></div>
+    <div class="filter-body">
+      <div class="range-row"><span style="font-size:.75rem;color:var(--muted);min-width:20px;">Min</span><input type="range" min="18" max="60" value="21" oninput="updateRange('ageMinD',this.value)"/><span class="range-val" id="ageMinD">21</span></div>
+      <div class="range-row"><span style="font-size:.75rem;color:var(--muted);min-width:20px;">Max</span><input type="range" min="18" max="60" value="35" oninput="updateRange('ageMaxD',this.value)"/><span class="range-val" id="ageMaxD">35</span></div>
+    </div>
+  </div>
+  <div class="filter-section">
+    <div class="filter-section-title" onclick="toggleSection(this)">Religion <i class="bi bi-chevron-down"></i></div>
+    <div class="filter-body">
+      <label class="filter-label"><input type="checkbox" checked/> Hindu <span class="filter-count">1,104</span></label>
+      <label class="filter-label"><input type="checkbox"/> Christian <span class="filter-count">98</span></label>
+      <label class="filter-label"><input type="checkbox"/> Muslim <span class="filter-count">46</span></label>
+    </div>
+  </div>
+  <div class="filter-section">
+    <div class="filter-section-title" onclick="toggleSection(this)">Caste <i class="bi bi-chevron-down"></i></div>
+    <div class="filter-body">
+      <label class="filter-label"><input type="checkbox" checked/> Iyer <span class="filter-count">312</span></label>
+      <label class="filter-label"><input type="checkbox"/> Iyengar <span class="filter-count">218</span></label>
+      <label class="filter-label"><input type="checkbox"/> Vellalar <span class="filter-count">196</span></label>
+      <label class="filter-label"><input type="checkbox"/> Nadar <span class="filter-count">142</span></label>
+    </div>
+  </div>
+  <div class="filter-section">
+    <div class="filter-section-title" onclick="toggleSection(this)">Location <i class="bi bi-chevron-down"></i></div>
+    <div class="filter-body">
+      <label class="filter-label"><input type="checkbox" checked/> Chennai <span class="filter-count">348</span></label>
+      <label class="filter-label"><input type="checkbox" checked/> Coimbatore <span class="filter-count">214</span></label>
+      <label class="filter-label"><input type="checkbox"/> Madurai <span class="filter-count">178</span></label>
+    </div>
+  </div>
+  <div class="filter-section">
+    <button class="btn-pink w-100" onclick="applyFilters();closeFilterDrawer()"><i class="bi bi-check2 me-1"></i>Apply Filters</button>
+  </div>
+</div>
+
+<!-- Mobile filter trigger -->
+<button class="mob-filter-btn" onclick="openFilterDrawer()">
+  <i class="bi bi-sliders"></i> Filters <span style="background:rgba(255,255,255,.3);border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;margin-left:.2rem;">5</span>
+</button>
+
+<!-- ════════ DESKTOP FOOTER ════════ -->
+<footer class="desktop-footer">
+  <div class="footer-nav-links">
+    <a href="index.html#howitworks">How It Works</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2025 Namma Matrimony. All rights reserved. Made with 💗 in Tamil Nadu, India.</div>
+</footer>
+
+<!-- ════════ MOBILE BOTTOM NAV ════════ -->
+<nav class="mob-bottom-nav">
+  <a href="index.html" class="mob-nav-item n-home " onclick="setMobActive(this)">
+    <div class="mob-nav-icon">🏠</div><span class="mob-nav-label">Home</span>
+  </a>
+  <a href="search.html" class="mob-nav-item n-profiles active" onclick="setMobActive(this)">
+    <div class="mob-nav-icon">👥</div><span class="mob-nav-label">Profiles</span>
+  </a>
+  <a href="#matches" class="mob-nav-item n-matches " onclick="setMobActive(this)">
+    <div class="mob-nav-icon">💞</div><span class="mob-nav-label">Matches</span>
+  </a>
+  <button class="mob-nav-item n-account " id="mobAcctBtn" onclick="handleAccountTap()">
+    <div class="mob-nav-icon">👤</div><span class="mob-nav-label">Account</span>
+  </button>
+</nav>
+
+<!-- Account Drawer (logged in) -->
+<div class="acct-overlay" id="acctOverlay" onclick="closeAcctDrawer()"></div>
+<div class="acct-drawer" id="acctDrawer">
+  <div class="acct-drawer-handle"></div>
+  <div class="acct-drawer-header">
+    <div class="acct-avatar">👩</div>
+    <div>
+      <div class="acct-name">Priya Ramasubramanian</div>
+      <div class="acct-id">NM-2024-08731 · ⭐ Premium</div>
+    </div>
+  </div>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-person-fill" style="color:var(--pink);"></i>Overview</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-images" style="color:var(--green);"></i>Photos</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-stars" style="color:var(--pink);"></i>Horoscope</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-heart-fill" style="color:var(--pink);"></i>Interests</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-chat-dots-fill" style="color:var(--green);"></i>Chat</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-shield-lock-fill" style="color:var(--green);"></i>Privacy</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-gem" style="color:#FFD700;"></i>Subscription</a>
+  <button class="acct-menu-item danger" onclick="simulateLogout();closeAcctDrawer()"><i class="bi bi-box-arrow-right"></i>Logout</button>
+</div>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  /* Navbar scroll */
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>40);
+    document.getElementById('backTop').classList.toggle('visible',window.scrollY>300);
+  });
+
+  /* View toggle */
+  function setView(type,btn){
+    document.querySelectorAll('.vt-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('gridView').style.display=type==='grid'?'block':'none';
+    document.getElementById('listView').style.display=type==='list'?'block':'none';
+  }
+
+  /* Quick chips */
+  function toggleChip(el){
+    document.querySelectorAll('.qchip').forEach(c=>c.classList.remove('active'));
+    el.classList.add('active');
+    simulateSearch();
+  }
+
+  /* Active filter chips */
+  function removeChip(btn){
+    btn.closest('.achip').remove();
+    simulateSearch();
+  }
+  function clearAllChips(){
+    document.querySelectorAll('.achip').forEach(c=>c.remove());
+    simulateSearch();
+  }
+
+  /* Sort */
+  function sortProfiles(val){
+    const grid=document.getElementById('profileGrid');
+    const cards=[...grid.children];
+    if(val==='newest'){cards.sort(()=>Math.random()-.5)}
+    else if(val==='match'){cards.sort(()=>Math.random()-.5)}
+    cards.forEach((c,i)=>{c.style.animationDelay=i*.06+'s';c.classList.remove('card-anim');void c.offsetWidth;c.classList.add('card-anim');grid.appendChild(c)});
+  }
+
+  /* Range sliders */
+  function updateRange(id,val){
+    document.getElementById(id).textContent=val;
+    const input=event.target;
+    const pct=((val-input.min)/(input.max-input.min)*100).toFixed(0);
+    input.style.setProperty('--val',pct+'%');
+  }
+  function updateHeightRange(id,val){
+    const ft=Math.floor(val/30.48);
+    const inch=Math.round((val/30.48-ft)*12);
+    document.getElementById(id).textContent=ft+"'"+inch+'"';
+    const input=event.target;
+    const pct=((val-input.min)/(input.max-input.min)*100).toFixed(0);
+    input.style.setProperty('--val',pct+'%');
+  }
+
+  /* Filter sections collapse */
+  function toggleSection(el){
+    el.classList.toggle('collapsed');
+    const body=el.nextElementSibling;
+    body.style.display=el.classList.contains('collapsed')?'none':'block';
+  }
+
+  /* Caste search */
+  function filterCasteList(q){
+    document.querySelectorAll('#casteList .filter-label').forEach(l=>{
+      l.style.display=l.textContent.toLowerCase().includes(q.toLowerCase())?'flex':'none';
+    });
+  }
+
+  /* Reset */
+  function resetAllFilters(){
+    document.querySelectorAll('.filter-sidebar input[type=checkbox]').forEach(c=>c.checked=false);
+    document.querySelectorAll('.achip').forEach(c=>c.remove());
+    simulateSearch();
+  }
+
+  /* Apply / search simulation */
+  function applyFilters(){simulateSearch()}
+  function runSearch(){simulateSearch()}
+
+  function simulateSearch(){
+    const grid=document.getElementById('profileGrid');
+    const list=document.getElementById('listView');
+    [grid,list].forEach(c=>{c.style.opacity='.4'});
+    setTimeout(()=>{
+      [grid,list].forEach(c=>{c.style.opacity='1'});
+      const n=Math.floor(Math.random()*600+400);
+      document.getElementById('resultCount').textContent=n.toLocaleString('en-IN');
+    },600);
+  }
+
+  /* Interest */
+  function sendInterest(btn){
+    if(btn.disabled)return;
+    btn.innerHTML='<i class="bi bi-heart-fill me-1"></i>Sent!';
+    btn.style.background='linear-gradient(135deg,var(--green),var(--green-light))';
+    btn.style.boxShadow='none';
+    btn.disabled=true;
+  }
+
+  /* Shortlist */
+  function toggleShortlist(btn){
+    btn.classList.toggle('active');
+    const isActive=btn.classList.contains('active');
+    btn.innerHTML=isActive?'<i class="bi bi-bookmark-fill"></i>':'<i class="bi bi-bookmark"></i>';
+  }
+
+  /* View profile */
+  function viewProfile(){window.location.href='profile.html'}
+  function openChat(){window.location.href='profile.html'}
+
+  /* Profile ID search chip */
+  /* Pagination */
+  function goPage(btn){
+    document.querySelectorAll('.pg-btn').forEach(b=>b.classList.remove('active'));
+    if(!isNaN(btn.textContent))btn.classList.add('active');
+    simulateSearch();
+    window.scrollTo({top:document.getElementById('resultsBar').offsetTop-10,behavior:'smooth'});
+  }
+
+  /* Mobile filter drawer */
+  function openFilterDrawer(){
+    document.getElementById('filterDrawer').classList.add('open');
+    document.getElementById('filterOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeFilterDrawer(){
+    document.getElementById('filterDrawer').classList.remove('open');
+    document.getElementById('filterOverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+
+</script>
+
+  /* ── Login state ── */
+  let isLoggedIn = false;
+  function simulateLogin(){isLoggedIn=true;document.getElementById('desktopLoggedOut').style.display='none';document.getElementById('desktopLoggedIn').style.cssText='display:flex!important'}
+  function simulateLogout(){isLoggedIn=false;document.getElementById('desktopLoggedIn').style.display='none';document.getElementById('desktopLoggedOut').style.cssText='display:flex!important'}
+  /* ── Account drawer ── */
+  function handleAccountTap(){
+    if(isLoggedIn){openAcctDrawer();}
+    else{window.location.href='login.html';}
+    document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('active'));
+    document.getElementById('mobAcctBtn').classList.add('active');
+  }
+  function openAcctDrawer(){document.getElementById('acctDrawer').classList.add('open');document.getElementById('acctOverlay').classList.add('open');document.body.style.overflow='hidden'}
+  function closeAcctDrawer(){document.getElementById('acctDrawer').classList.remove('open');document.getElementById('acctOverlay').classList.remove('open');document.body.style.overflow=''}
+  /* ── Scroll glow ── */
+  const _mainNav=document.getElementById('mainNav');
+  const _mobNav=document.getElementById('mobNavSticky');
+  window.addEventListener('scroll',()=>{
+    const s=window.scrollY>40;
+    _mainNav&&_mainNav.classList.toggle('scrolled',s);
+    _mobNav&&_mobNav.classList.toggle('scrolled',s);
+    const bt=document.getElementById('backTop');
+    bt&&bt.classList.toggle('visible',window.scrollY>300);
+  });
+  /* ── Lang ── */
+  function switchLang(btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+  /* ── Mobile nav active ── */
+  function setMobActive(el){document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+
+</script>
+</body>
+</html>

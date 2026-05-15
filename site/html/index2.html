@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Namma Matrimony – Find Your Perfect Match</title>
+  <meta name="description" content="Namma Matrimony – Trusted Tamil matrimony for Brides & Grooms."/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink:#E91E8C; --pink-light:#FF6EBB; --pink-pale:#FDE8F4;
+      --green:#1B8C5E; --green-light:#27C47F; --green-pale:#E5F7F0;
+      --dark:#1A1028; --text:#3D3046; --muted:#8B7E97;
+      --radius:14px; --radius-lg:24px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;padding-bottom:64px;}
+    h1,h2,h3,h4,h5{font-family:'Playfair Display',serif;}
+    a{text-decoration:none;color:inherit;}
+
+    /* BUTTONS */
+    .btn-pink{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border:none;border-radius:50px;padding:.55rem 1.4rem;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(233,30,140,.22);}
+    .btn-pink:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(233,30,140,.3);color:#fff;}
+    .btn-green{background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;border:none;border-radius:50px;padding:.55rem 1.4rem;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(27,140,94,.2);}
+    .btn-green:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(27,140,94,.28);color:#fff;}
+    .btn-outline-pink{border:2px solid var(--pink);color:var(--pink);border-radius:50px;padding:.5rem 1.3rem;font-weight:600;background:transparent;transition:all .2s;}
+    .btn-outline-pink:hover{background:var(--pink);color:#fff;}
+    @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(233,30,140,.4);}70%{box-shadow:0 0 0 14px rgba(233,30,140,0);}100%{box-shadow:0 0 0 0 rgba(233,30,140,0);}}
+    .btn-pulse{animation:pulse-ring 2s ease-out infinite;}
+    .lang-btn{font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;border:1.5px solid #EDD7EA;border-radius:7px;padding:.22rem .55rem;transition:all .2s;background:transparent;}
+    .lang-btn:hover,.lang-btn.active{border-color:var(--pink);color:var(--pink);background:var(--pink-pale);}
+    .section-title{font-size:1.55rem;font-weight:800;color:var(--dark);margin-bottom:1.2rem;}
+
+    /* NAVBAR */
+    .navbar{position:sticky;top:0;z-index:1050;background:rgba(255,255,255,0.97);backdrop-filter:blur(14px);border-bottom:1px solid #F0E6F6;padding:.7rem 0;transition:box-shadow .3s;}
+    .navbar.scrolled{box-shadow:0 4px 24px rgba(233,30,140,.12);}
+    .navbar-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .nav-link{color:var(--text)!important;font-weight:500;font-size:.88rem;padding:.35rem .8rem!important;border-radius:8px;transition:background .2s,color .2s;}
+    .nav-link:hover{background:var(--pink-pale);color:var(--pink)!important;}
+    /* Mobile: no hamburger — show inline action buttons */
+    @media(max-width:991px){
+      .navbar-collapse{display:none!important;}
+      .navbar-toggler{display:none!important;}
+      .mobile-nav-btns{display:flex!important;}
+      body{padding-bottom:64px;}
+    }
+    @media(min-width:992px){
+      .mobile-nav-btns{display:none!important;}
+      body{padding-bottom:0;}
+    }
+    .mobile-nav-btns{gap:.4rem;align-items:center;}
+
+    /* HERO */
+    .hero{min-height:100vh;background:linear-gradient(135deg,#fff 0%,var(--pink-pale) 45%,var(--green-pale) 100%);position:relative;overflow:hidden;display:flex;align-items:center;padding:70px 0 60px;}
+    .hero::before{content:'';position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(233,30,140,.12),transparent 70%);pointer-events:none;}
+    .hero::after{content:'';position:absolute;bottom:-100px;left:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(27,140,94,.1),transparent 70%);pointer-events:none;}
+    @keyframes floatUp{0%,100%{transform:translateY(0) rotate(0deg);opacity:.18;}50%{transform:translateY(-36px) rotate(12deg);opacity:.28;}}
+    .float-heart{position:absolute;font-size:1.4rem;animation:floatUp 6s ease-in-out infinite;opacity:.18;pointer-events:none;}
+    .hero-title{font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.15;color:var(--dark);}
+    .hero-title .accent-pink{color:var(--pink);}
+    .hero-title .accent-green{color:var(--green);}
+    .hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:480px;}
+    .hero-stats{display:flex;gap:1.8rem;flex-wrap:wrap;}
+    .stat-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .stat-label{font-size:.7rem;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em;}
+
+    /* SEARCH BOX */
+    .search-box{background:#fff;border-radius:var(--radius-lg);box-shadow:0 16px 56px rgba(233,30,140,.14);padding:1.8rem;border:1px solid #F5E4F0;position:relative;z-index:2;}
+    .search-box h5{font-size:1.05rem;color:var(--dark);margin-bottom:.9rem;}
+    .search-box .form-select,.search-box .form-control{border-radius:10px;border:1.5px solid #EDD7EA;font-size:.86rem;padding:.58rem .85rem;color:var(--text);transition:border .2s,box-shadow .2s;}
+    .search-box .form-select:focus,.search-box .form-control:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(233,30,140,.1);}
+    .gender-tab{display:flex;border-radius:10px;overflow:hidden;border:1.5px solid #EDD7EA;margin-bottom:.9rem;}
+    .gender-tab button{flex:1;border:none;background:transparent;padding:.48rem 0;font-weight:600;font-size:.86rem;transition:all .2s;cursor:pointer;color:var(--muted);}
+    .gender-tab button.active{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;}
+
+    /* PROFILES */
+    .profiles-section{background:var(--pink-pale);padding:48px 0;}
+    .profile-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 3px 18px rgba(233,30,140,.08);transition:transform .3s,box-shadow .3s;height:100%;}
+    .profile-card:hover{transform:translateY(-5px);box-shadow:0 14px 38px rgba(233,30,140,.16);}
+    .profile-img{height:150px;background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));display:flex;align-items:center;justify-content:center;font-size:3.8rem;position:relative;overflow:hidden;}
+    .profile-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(255,255,255,.7),transparent);}
+    .profile-badge{position:absolute;top:8px;right:8px;background:var(--green);color:#fff;font-size:.6rem;font-weight:700;padding:.18rem .55rem;border-radius:50px;z-index:1;}
+    .profile-badge.premium{background:var(--pink);}
+    .profile-body{padding:1rem;}
+    .profile-name{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.2rem;}
+    .profile-meta{font-size:.74rem;color:var(--muted);margin-bottom:.55rem;}
+    .profile-meta span{margin-right:.55rem;}
+    .profile-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.7rem;}
+    .profile-tag{font-size:.66rem;font-weight:600;padding:.16rem .5rem;border-radius:50px;background:var(--green-pale);color:var(--green);}
+    .profile-tag.pink{background:var(--pink-pale);color:var(--pink);}
+
+    /* WHY NAMMA – 2-column coloured */
+    .why-section{padding:48px 0;}
+    .why-col{padding:2.5rem 2rem;border-radius:var(--radius-lg);height:100%;}
+    .why-col.left{background:linear-gradient(145deg,var(--dark) 0%,#2A1845 100%);color:#fff;}
+    .why-col.right{background:linear-gradient(145deg,var(--green) 0%,var(--green-light) 100%);color:#fff;}
+    .why-col h3{font-size:1.3rem;color:#fff;margin-bottom:1.2rem;}
+    .why-feature{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1.1rem;}
+    .why-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .left .why-icon{background:rgba(233,30,140,.22);color:var(--pink-light);}
+    .right .why-icon{background:rgba(255,255,255,.2);color:#fff;}
+    .why-feature-title{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.18rem;}
+    .why-feature-desc{font-size:.77rem;color:rgba(255,255,255,.6);line-height:1.5;}
+
+    /* HOW IT WORKS – 5 compact cards */
+    .hiw-section{background:#fff;padding:48px 0;}
+    .hiw-row{display:flex;gap:1rem;overflow-x:auto;padding-bottom:.5rem;}
+    .hiw-row::-webkit-scrollbar{height:4px;}
+    .hiw-row::-webkit-scrollbar-thumb{background:var(--pink-pale);border-radius:4px;}
+    .hiw-card{flex:0 0 175px;background:#fff;border:1.5px solid #F0E6F6;border-radius:var(--radius);padding:1.2rem .9rem;text-align:center;transition:transform .25s,box-shadow .25s,border-color .25s;}
+    .hiw-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(233,30,140,.12);border-color:var(--pink-pale);}
+    .hiw-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .7rem;font-size:1.4rem;}
+    .hiw-icon.pink{background:var(--pink-pale);color:var(--pink);}
+    .hiw-icon.green{background:var(--green-pale);color:var(--green);}
+    .hiw-step{font-size:.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.25rem;}
+    .hiw-title{font-size:.85rem;font-weight:700;color:var(--dark);margin-bottom:.3rem;}
+    .hiw-desc{font-size:.74rem;color:var(--muted);line-height:1.45;}
+
+    /* DESKTOP FOOTER */
+    footer.desktop-footer{background:var(--dark);color:rgba(255,255,255,.42);padding:.9rem 0;font-size:.8rem;text-align:center;}
+    footer.desktop-footer span{color:var(--pink-light);}
+
+    /* MOBILE BOTTOM NAV */
+    .mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(255,255,255,0.98);backdrop-filter:blur(16px);border-top:1px solid #F0E6F6;z-index:1100;box-shadow:0 -4px 20px rgba(233,30,140,.1);}
+    @media(max-width:991px){.mobile-bottom-nav{display:flex;}}
+    .mob-nav-inner{display:flex;width:100%;align-items:stretch;}
+    .mob-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:var(--muted);border:none;background:transparent;padding:0;}
+    .mob-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:box-shadow .25s,transform .2s,background .2s;}
+    .mob-label{font-size:.58rem;font-weight:600;letter-spacing:.03em;color:var(--muted);transition:color .2s;}
+    /* Per-icon colours */
+    .mob-nav-item:nth-child(1) .mob-icon{color:var(--pink);}
+    .mob-nav-item:nth-child(2) .mob-icon{color:#7B5EA7;}
+    .mob-nav-item:nth-child(3) .mob-icon{color:var(--green);}
+    .mob-nav-item:nth-child(4) .mob-icon{color:#E07B00;}
+    /* Hover glows */
+    .mob-nav-item:nth-child(1):hover .mob-icon,.mob-nav-item:nth-child(1).active .mob-icon{background:rgba(233,30,140,.12);box-shadow:0 0 14px 5px rgba(233,30,140,.3);transform:translateY(-2px);}
+    .mob-nav-item:nth-child(2):hover .mob-icon,.mob-nav-item:nth-child(2).active .mob-icon{background:rgba(123,94,167,.12);box-shadow:0 0 14px 5px rgba(123,94,167,.3);transform:translateY(-2px);}
+    .mob-nav-item:nth-child(3):hover .mob-icon,.mob-nav-item:nth-child(3).active .mob-icon{background:rgba(27,140,94,.12);box-shadow:0 0 14px 5px rgba(27,140,94,.3);transform:translateY(-2px);}
+    .mob-nav-item:nth-child(4):hover .mob-icon,.mob-nav-item:nth-child(4).active .mob-icon{background:rgba(224,123,0,.12);box-shadow:0 0 14px 5px rgba(224,123,0,.3);transform:translateY(-2px);}
+    .mob-nav-item:nth-child(1).active .mob-label{color:var(--pink);}
+    .mob-nav-item:nth-child(2).active .mob-label{color:#7B5EA7;}
+    .mob-nav-item:nth-child(3).active .mob-label{color:var(--green);}
+    .mob-nav-item:nth-child(4).active .mob-label{color:#E07B00;}
+
+    /* Scroll reveal */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* Back to top */
+    #backTop{position:fixed;bottom:76px;right:18px;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--green));color:#fff;border:none;box-shadow:0 4px 18px rgba(233,30,140,.32);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(14px);transition:opacity .3s,transform .3s;z-index:999;}
+    #backTop.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:576px){.hiw-card{flex:0 0 148px;}.why-col{padding:1.6rem 1.1rem;}}
+  </style>
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar" id="mainNav">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a class="navbar-brand" href="#">💍 Namma Matrimony</a>
+
+    <!-- Desktop links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#profiles">Profiles</a></li>
+        <li class="nav-item"><a class="nav-link" href="#why">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#hiw">How It Works</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="lang-btn active" onclick="switchLang(this)">EN</button>
+        <button class="lang-btn" onclick="switchLang(this)">த</button>
+        <a href="/login" class="btn btn-outline-pink btn-sm">Login</a>
+        <a href="/register" class="btn btn-pink btn-sm btn-pulse">Register Free</a>
+      </div>
+    </div>
+
+    <!-- Mobile: inline action row (no hamburger) -->
+    <div class="mobile-nav-btns d-flex">
+      <button class="lang-btn active me-1" onclick="switchLang(this)">EN</button>
+      <button class="lang-btn me-2" onclick="switchLang(this)">த</button>
+      <a href="/login" class="btn btn-outline-pink btn-sm me-1" style="font-size:.78rem;padding:.38rem .9rem;">Login</a>
+      <a href="/register" class="btn btn-pink btn-sm" style="font-size:.78rem;padding:.38rem .9rem;">Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero" id="hero">
+  <span class="float-heart" style="top:14%;left:7%;animation-delay:0s;">💗</span>
+  <span class="float-heart" style="top:28%;left:2%;animation-delay:1.5s;">🌸</span>
+  <span class="float-heart" style="top:62%;right:4%;animation-delay:.8s;">💕</span>
+  <span class="float-heart" style="top:10%;right:16%;animation-delay:2s;">🌿</span>
+
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <h1 class="hero-title mb-3">
+          Find Your <span class="accent-pink">Soulmate</span>,<br>
+          Begin a <span class="accent-green">Beautiful</span> Journey
+        </h1>
+        <p class="hero-sub mb-4">Namma Matrimony connects Tamil brides and grooms with verified profiles, horoscope matching, and community trust — all in one place.</p>
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a href="/register" class="btn btn-pink btn-lg btn-pulse"><i class="bi bi-person-plus me-2"></i>Create Free Profile</a>
+          <a href="#profiles" class="btn btn-green btn-lg"><i class="bi bi-search me-2"></i>Browse Profiles</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-num" data-count="25000">0</div><div class="stat-label">Active Profiles</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="4800">0</div><div class="stat-label">Marriages</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="98">0</div><div class="stat-label">% Satisfaction</div></div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="search-box reveal">
+          <h5><i class="bi bi-heart-fill me-2" style="color:var(--pink);"></i>Find Your Match</h5>
+          <div class="gender-tab" id="genderTab">
+            <button class="active" onclick="setGender(this)">👩 Bride</button>
+            <button onclick="setGender(this)">👨 Groom</button>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="form-label fw-semibold" style="font-size:.75rem;">Age From</label>
+              <select class="form-select"><option>18 yrs</option><option>21 yrs</option><option>24 yrs</option><option>27 yrs</option></select>
+            </div>
+            <div class="col-6">
+              <label class="form-label fw-semibold" style="font-size:.75rem;">Age To</label>
+              <select class="form-select"><option>25 yrs</option><option>28 yrs</option><option>32 yrs</option><option>38 yrs</option></select>
+            </div>
+            <div class="col-6">
+              <label class="form-label fw-semibold" style="font-size:.75rem;">Religion</label>
+              <select class="form-select"><option>Hindu</option><option>Christian</option><option>Muslim</option></select>
+            </div>
+            <div class="col-6">
+              <label class="form-label fw-semibold" style="font-size:.75rem;">Caste</label>
+              <select class="form-select"><option>Any Caste</option><option>Iyer</option><option>Iyengar</option><option>Vellalar</option><option>Nadar</option></select>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold" style="font-size:.75rem;">Location</label>
+              <select class="form-select"><option>Any Location</option><option>Chennai</option><option>Coimbatore</option><option>Madurai</option><option>Trichy</option></select>
+            </div>
+          </div>
+          <button class="btn btn-pink w-100 py-2" onclick="doSearch(event)"><i class="bi bi-search me-2"></i>Search Profiles</button>
+          <p class="text-center mt-2 mb-0" style="font-size:.75rem;color:var(--muted);">Already have an account? <a href="/login" style="color:var(--pink);font-weight:600;">Login here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROFILES ════ -->
+<section class="profiles-section" id="profiles">
+  <div class="container">
+    <h2 class="section-title reveal">Recommended Profiles</h2>
+    <div class="d-flex flex-wrap gap-2 mb-3 reveal">
+      <button class="btn btn-pink btn-sm" onclick="filterProfiles(this)">All</button>
+      <button class="btn btn-outline-pink btn-sm" onclick="filterProfiles(this)">Iyer</button>
+      <button class="btn btn-outline-pink btn-sm" onclick="filterProfiles(this)">Iyengar</button>
+      <button class="btn btn-outline-pink btn-sm" onclick="filterProfiles(this)">Vellalar</button>
+      <button class="btn btn-outline-pink btn-sm" onclick="filterProfiles(this)">Nadar</button>
+    </div>
+    <div class="row g-3">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="profile-card"><div class="profile-img">👩<span class="profile-badge">✔ Verified</span></div><div class="profile-body"><div class="profile-name">Priya R.</div><div class="profile-meta"><span>26 yrs</span><span>Chennai</span></div><div class="profile-tags"><span class="profile-tag">Iyer</span><span class="profile-tag pink">Engineer</span></div><button class="btn btn-pink w-100 btn-sm" style="font-size:.72rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button></div></div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="profile-card"><div class="profile-img" style="background:linear-gradient(135deg,var(--green-pale),var(--pink-pale));">👨<span class="profile-badge">✔ Verified</span></div><div class="profile-body"><div class="profile-name">Karthik M.</div><div class="profile-meta"><span>29 yrs</span><span>Coimbatore</span></div><div class="profile-tags"><span class="profile-tag">Vellalar</span><span class="profile-tag pink">Doctor</span></div><button class="btn btn-pink w-100 btn-sm" style="font-size:.72rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button></div></div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="profile-card"><div class="profile-img" style="background:linear-gradient(135deg,#FDE8F4,#E5F7F0);">👩<span class="profile-badge premium">⭐ Premium</span></div><div class="profile-body"><div class="profile-name">Deepa S.</div><div class="profile-meta"><span>24 yrs</span><span>Madurai</span></div><div class="profile-tags"><span class="profile-tag">Iyengar</span><span class="profile-tag pink">Teacher</span></div><button class="btn btn-pink w-100 btn-sm" style="font-size:.72rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button></div></div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="profile-card"><div class="profile-img" style="background:linear-gradient(135deg,#E5F7F0,#FDE8F4);">👨<span class="profile-badge">✔ Verified</span></div><div class="profile-body"><div class="profile-name">Rajesh K.</div><div class="profile-meta"><span>31 yrs</span><span>Trichy</span></div><div class="profile-tags"><span class="profile-tag">Nadar</span><span class="profile-tag pink">CA</span></div><button class="btn btn-pink w-100 btn-sm" style="font-size:.72rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button></div></div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="profile-card"><div class="profile-img" style="background:linear-gradient(135deg,#FFF0F8,#E5F7F0);">👩<span class="profile-badge">✔ Verified</span></div><div class="profile-body"><div class="profile-name">Anitha P.</div><div class="profile-meta"><span>27 yrs</span><span>Salem</span></div><div class="profile-tags"><span class="profile-tag">Mudaliar</span><span class="profile-tag pink">Nurse</span></div><button class="btn btn-pink w-100 btn-sm" style="font-size:.72rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button></div></div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="profile-card"><div class="profile-img" style="background:linear-gradient(135deg,#E5F7F0,#FFF0F8);">👨<span class="profile-badge premium">⭐ Premium</span></div><div class="profile-body"><div class="profile-name">Suresh B.</div><div class="profile-meta"><span>33 yrs</span><span>Chennai</span></div><div class="profile-tags"><span class="profile-tag">Iyer</span><span class="profile-tag pink">IAS</span></div><button class="btn btn-pink w-100 btn-sm" style="font-size:.72rem;" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Interest</button></div></div>
+      </div>
+    </div>
+    <div class="text-center mt-4 reveal">
+      <a href="/profiles" class="btn btn-green px-5">View All Profiles <i class="bi bi-arrow-right ms-2"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY NAMMA – 2-column ════ -->
+<section class="why-section" id="why">
+  <div class="container">
+    <h2 class="section-title reveal">Why Namma Matrimony</h2>
+    <div class="row g-3">
+      <div class="col-md-6 reveal">
+        <div class="why-col left h-100">
+          <h3>Trusted &amp; Secure</h3>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-shield-check-fill"></i></div><div><div class="why-feature-title">Verified Profiles</div><div class="why-feature-desc">Every profile verified via mobile OTP and admin review for complete authenticity.</div></div></div>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-incognito"></i></div><div><div class="why-feature-title">Privacy Control</div><div class="why-feature-desc">Control exactly who sees your photos, contact and profile details at any time.</div></div></div>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-lock-fill"></i></div><div><div class="why-feature-title">Secure Messaging</div><div class="why-feature-desc">Chat only unlocks after mutual interest acceptance — fully secure and private.</div></div></div>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-phone-fill"></i></div><div><div class="why-feature-title">Mobile Responsive</div><div class="why-feature-desc">Seamlessly browse and connect on any device, any time, anywhere.</div></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 reveal">
+        <div class="why-col right h-100">
+          <h3>Smart Features</h3>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-stars"></i></div><div><div class="why-feature-title">Tamil ஜாதக Horoscope</div><div class="why-feature-desc">South Indian 12-house chart with full planet placement and matching support.</div></div></div>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-search-heart"></i></div><div><div class="why-feature-title">Smart Daily Matches</div><div class="why-feature-desc">AI-curated daily profiles tailored precisely to your preferences and horoscope.</div></div></div>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-globe2"></i></div><div><div class="why-feature-title">Tamil &amp; English</div><div class="why-feature-desc">Browse and manage your entire profile fully in Tamil or English — your choice.</div></div></div>
+          <div class="why-feature"><div class="why-icon"><i class="bi bi-bell-fill"></i></div><div><div class="why-feature-title">Instant Notifications</div><div class="why-feature-desc">Get notified on interests, messages and matches via app, email or SMS instantly.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ HOW IT WORKS – 5 compact cards ════ -->
+<section class="hiw-section" id="hiw">
+  <div class="container">
+    <h2 class="section-title reveal">How It Works</h2>
+    <div class="hiw-row reveal">
+      <div class="hiw-card"><div class="hiw-icon pink"><i class="bi bi-person-plus-fill"></i></div><div class="hiw-step">Step 01</div><div class="hiw-title">Register Free</div><div class="hiw-desc">Create your profile with mobile OTP in minutes.</div></div>
+      <div class="hiw-card"><div class="hiw-icon green"><i class="bi bi-card-list"></i></div><div class="hiw-step">Step 02</div><div class="hiw-title">Complete Profile</div><div class="hiw-desc">Add horoscope, photos, education and family.</div></div>
+      <div class="hiw-card"><div class="hiw-icon pink"><i class="bi bi-search-heart"></i></div><div class="hiw-step">Step 03</div><div class="hiw-title">Search &amp; Match</div><div class="hiw-desc">Smart filters or daily recommended matches.</div></div>
+      <div class="hiw-card"><div class="hiw-icon green"><i class="bi bi-heart-fill"></i></div><div class="hiw-step">Step 04</div><div class="hiw-title">Send Interest</div><div class="hiw-desc">Show interest and connect after acceptance.</div></div>
+      <div class="hiw-card"><div class="hiw-icon pink"><i class="bi bi-chat-heart-fill"></i></div><div class="hiw-step">Step 05</div><div class="hiw-title">Connect &amp; Marry</div><div class="hiw-desc">Chat, meet and begin your journey together.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ DESKTOP FOOTER ════ -->
+<footer class="desktop-footer">
+  <div class="container">
+    © 2025 <span>Namma Matrimony</span>. All rights reserved. Made with 💗 in Tamil Nadu, India.
+  </div>
+</footer>
+
+<!-- ════ MOBILE STICKY BOTTOM NAV ════ -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <div class="mob-nav-inner">
+    <button class="mob-nav-item active" onclick="setMobNav(this,'#hero')">
+      <div class="mob-icon">🏠</div>
+      <span class="mob-label">Home</span>
+    </button>
+    <button class="mob-nav-item" onclick="setMobNav(this,'#profiles')">
+      <div class="mob-icon">👥</div>
+      <span class="mob-label">Profiles</span>
+    </button>
+    <button class="mob-nav-item" onclick="setMobNav(this,'#why')">
+      <div class="mob-icon">💞</div>
+      <span class="mob-label">Matches</span>
+    </button>
+    <button class="mob-nav-item" onclick="setMobNav(this,'/account')">
+      <div class="mob-icon">👤</div>
+      <span class="mob-label">Account</span>
+    </button>
+  </div>
+</nav>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll shadow
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 300);
+  });
+
+  // Scroll reveal
+  const revEls = document.querySelectorAll('.reveal');
+  const rObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 65);
+        rObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revEls.forEach(el => rObs.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target) {
+    let cur = 0;
+    const step = Math.ceil(target / 55);
+    const t = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = cur.toLocaleString('en-IN') + (el.dataset.count == '98' ? '%' : '+');
+      if (cur >= target) clearInterval(t);
+    }, 22);
+  }
+  const cObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target, parseInt(e.target.dataset.count)); cObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => cObs.observe(el));
+
+  function setGender(btn) {
+    document.querySelectorAll('#genderTab button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function doSearch(e) {
+    const btn = e.currentTarget;
+    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Searching…';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<i class="bi bi-search me-2"></i>Search Profiles';
+      btn.disabled = false;
+      document.getElementById('profiles').scrollIntoView({behavior:'smooth'});
+    }, 1400);
+  }
+  function sendInterest(btn) {
+    btn.innerHTML = '<i class="bi bi-heart-fill me-1"></i>Sent!';
+    btn.style.background = 'linear-gradient(135deg,var(--green),var(--green-light))';
+    btn.disabled = true;
+  }
+  function filterProfiles(btn) {
+    document.querySelectorAll('[onclick="filterProfiles(this)"]').forEach(b => {
+      b.classList.remove('btn-pink'); b.classList.add('btn-outline-pink');
+    });
+    btn.classList.remove('btn-outline-pink'); btn.classList.add('btn-pink');
+  }
+  function switchLang(btn) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function setMobNav(btn, href) {
+    document.querySelectorAll('.mob-nav-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (href.startsWith('#')) {
+      const t = document.querySelector(href);
+      if (t) t.scrollIntoView({behavior:'smooth'});
+    } else { window.location.href = href; }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Priya R. – Profile | Namma Matrimony</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+:root{--pink:#E91E8C;--pink-light:#FF6EBB;--pink-pale:#FDE8F4;--green:#1B8C5E;--green-light:#27C47F;--green-pale:#E5F7F0;--dark:#1A1028;--text:#3D3046;--muted:#8B7E97;--border:#F0E6F6;--shadow-pink:0 8px 32px rgba(233,30,140,.18);--shadow-green:0 8px 32px rgba(27,140,94,.15);--radius:16px;--radius-lg:24px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--text);background:#F9F3FB;overflow-x:hidden}
+    h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif}
+    a{text-decoration:none;color:inherit}
+
+    /* ── Buttons ── */
+    .btn-pink{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border:none;border-radius:50px;padding:.6rem 1.6rem;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow-pink)}
+    .btn-pink:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(233,30,140,.28);color:#fff}
+    .btn-green{background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;border:none;border-radius:50px;padding:.6rem 1.6rem;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:var(--shadow-green)}
+    .btn-green:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(27,140,94,.25);color:#fff}
+    .btn-outline-pink{border:2px solid var(--pink);color:var(--pink);border-radius:50px;padding:.55rem 1.4rem;font-weight:600;background:transparent;transition:all .2s}
+    .btn-outline-pink:hover{background:var(--pink);color:#fff}
+    .btn-outline-green{border:2px solid var(--green);color:var(--green);border-radius:50px;padding:.55rem 1.4rem;font-weight:600;background:transparent;transition:all .2s}
+    .btn-outline-green:hover{background:var(--green);color:#fff}
+
+    /* ── Navbar ── */
+    .navbar{
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #F0E6F6;
+      padding:.85rem 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      transition:box-shadow .3s;
+    }
+    .navbar.scrolled{box-shadow:0 4px 24px rgba(233,30,140,.1)}
+    .navbar-brand{
+      font-family:'Playfair Display',serif;
+      font-size:1.55rem;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--pink),var(--green));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .nav-link{
+      color:var(--text)!important;
+      font-weight:500;
+      font-size:.92rem;
+      padding:.4rem .9rem!important;
+      border-radius:8px;
+      transition:background .2s,color .2s;
+    }
+    .nav-link:hover{background:var(--pink-pale);color:var(--pink)!important}
+    .navbar-toggler{border:none;box-shadow:none!important}
+    .lang-btn{
+      font-size:.82rem;
+      font-weight:600;
+      color:var(--muted);
+      cursor:pointer;
+      border:1.5px solid #EDD7EA;
+      border-radius:8px;
+      padding:.3rem .7rem;
+      transition:all .2s;
+      background:transparent;
+    }
+    .lang-btn:hover,.lang-btn.active{border-color:var(--pink);color:var(--pink);background:var(--pink-pale)}
+
+    /* ══ PROFILE HERO BANNER ══ */
+    .profile-banner{
+      background:linear-gradient(135deg,var(--dark) 0%,#2A1845 60%,#1B3A2A 100%);
+      padding:40px 0 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .profile-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(233,30,140,.18),transparent 70%)}
+    .profile-banner::after{content:'';position:absolute;bottom:-60px;left:-40px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(27,140,94,.15),transparent 70%)}
+
+    .profile-avatar-wrap{position:relative;display:inline-block}
+    .profile-avatar{
+      width:140px;height:140px;border-radius:50%;
+      background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));
+      border:5px solid rgba(255,255,255,.2);
+      display:flex;align-items:center;justify-content:center;
+      font-size:5rem;
+      box-shadow:0 8px 32px rgba(233,30,140,.3);
+      position:relative;z-index:1;
+    }
+    .online-dot{width:18px;height:18px;background:#27C47F;border-radius:50%;border:3px solid var(--dark);position:absolute;bottom:8px;right:8px;z-index:2}
+    .profile-premium-badge{
+      position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+      background:linear-gradient(135deg,#FFD700,#FFA000);
+      color:#5A3700;font-size:.68rem;font-weight:800;
+      padding:.2rem .9rem;border-radius:50px;letter-spacing:.06em;
+      white-space:nowrap;
+    }
+
+    .profile-name-hero{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#fff;margin-bottom:.3rem}
+    .profile-id-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:.78rem;font-weight:600;padding:.25rem .8rem;border-radius:50px;border:1px solid rgba(255,255,255,.15);display:inline-block;margin-bottom:.6rem}
+    .profile-meta-hero{color:rgba(255,255,255,.7);font-size:.88rem;display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin-bottom:.8rem}
+    .profile-meta-hero span{display:flex;align-items:center;gap:.3rem}
+    .verified-tag{background:rgba(27,140,94,.25);color:var(--green-light);border:1px solid rgba(27,140,94,.3);font-size:.75rem;font-weight:700;padding:.25rem .8rem;border-radius:50px;display:inline-flex;align-items:center;gap:.3rem}
+
+    /* Tab strip inside banner */
+    .profile-tabs{
+      display:flex;overflow-x:auto;gap:0;
+      border-top:1px solid rgba(255,255,255,.1);
+      margin-top:1.5rem;
+      scrollbar-width:none;
+    }
+    .profile-tabs::-webkit-scrollbar{display:none}
+    .ptab{
+      flex-shrink:0;padding:.9rem 1.4rem;
+      font-size:.88rem;font-weight:600;
+      color:rgba(255,255,255,.55);
+      cursor:pointer;border-bottom:3px solid transparent;
+      transition:all .2s;white-space:nowrap;
+    }
+    .ptab.active{color:#fff;border-bottom-color:var(--pink)}
+    .ptab:hover{color:rgba(255,255,255,.9)}
+
+    /* ══ MAIN LAYOUT ══ */
+    .main-content{padding:28px 0 80px}
+
+    /* ══ CARD ══ */
+    .info-card{background:#fff;border-radius:var(--radius-lg);padding:1.6rem;box-shadow:0 2px 16px rgba(233,30,140,.06);border:1px solid var(--border);margin-bottom:1.2rem}
+    .card-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+    .card-title{font-size:1rem;font-weight:700;color:var(--dark);display:flex;align-items:center;gap:.5rem}
+    .card-edit-btn{font-size:.8rem;font-weight:600;color:var(--pink);cursor:pointer;background:var(--pink-pale);border:none;border-radius:8px;padding:.3rem .8rem;transition:all .2s}
+    .card-edit-btn:hover{background:var(--pink);color:#fff}
+
+    /* Info rows */
+    .info-row{display:flex;align-items:flex-start;padding:.55rem 0;border-bottom:1px solid #FBF0F8;gap:.8rem}
+    .info-row:last-child{border-bottom:none;padding-bottom:0}
+    .info-label{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;min-width:110px;flex-shrink:0;padding-top:.12rem}
+    .info-value{font-size:.9rem;color:var(--text);font-weight:500;flex:1}
+
+    /* Tag pills */
+    .tag-pill{display:inline-block;font-size:.75rem;font-weight:600;padding:.25rem .7rem;border-radius:50px;margin:.15rem}
+    .tag-pink{background:var(--pink-pale);color:var(--pink)}
+    .tag-green{background:var(--green-pale);color:var(--green)}
+    .tag-dark{background:#EDE0F5;color:#6A1B9A}
+
+    /* Progress */
+    .progress-wrap{margin-bottom:.5rem}
+    .progress-label{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;margin-bottom:.3rem}
+    .progress{height:8px;border-radius:50px;background:#F0E6F6}
+    .progress-bar{border-radius:50px;background:linear-gradient(90deg,var(--pink),var(--green-light))}
+
+    /* ══ PHOTO GRID ══ */
+    .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .photo-cell{aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s}
+    .photo-cell:hover{transform:scale(1.04)}
+    .photo-cell .photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,.25);opacity:0;transition:opacity .2s;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem}
+    .photo-cell:hover .photo-overlay{opacity:1}
+    .photo-cell.add-more{border:2px dashed #EDD7EA;background:transparent;color:var(--pink);font-size:1.5rem;flex-direction:column;gap:.3rem}
+    .photo-cell.add-more span{font-size:.72rem;font-weight:600}
+    .photo-private-badge{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.5);color:#fff;font-size:.65rem;padding:.2rem .5rem;border-radius:6px}
+
+    /* ══ HOROSCOPE GRID ══ */
+    .horo-outer{background:linear-gradient(135deg,var(--dark),#2A1845);border-radius:var(--radius-lg);padding:1.5rem}
+    .horo-title{font-size:.78rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:1rem}
+    .horo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;max-width:260px;margin:0 auto}
+    .horo-cell{aspect-ratio:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.68rem;color:rgba(255,255,255,.5);font-weight:600;flex-direction:column;gap:1px}
+    .horo-cell .planet{font-size:.55rem;color:var(--pink-light);font-weight:700}
+    .horo-cell.filled{background:rgba(233,30,140,.18);border-color:rgba(233,30,140,.3)}
+    .horo-cell.center-cell{background:transparent;border:none}
+    .horo-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1rem}
+    .horo-info-box{background:rgba(255,255,255,.06);border-radius:10px;padding:.7rem;border:1px solid rgba(255,255,255,.08)}
+    .horo-info-box .label{font-size:.65rem;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.07em}
+    .horo-info-box .value{font-size:.9rem;font-weight:700;color:#fff;margin-top:.15rem}
+
+    /* ══ INTEREST ACTIONS ══ */
+    .action-bar{background:#fff;border-radius:var(--radius-lg);padding:1.4rem;box-shadow:0 2px 16px rgba(233,30,140,.06);border:1px solid var(--border);position:sticky;top:80px}
+    .match-score-ring{width:90px;height:90px;border-radius:50%;background:conic-gradient(var(--green) 0% 78%,rgba(27,140,94,.15) 78% 100%);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;position:relative}
+    .match-score-ring::before{content:'';position:absolute;width:72px;height:72px;border-radius:50%;background:#fff}
+    .match-score-inner{position:relative;z-index:1;text-align:center}
+    .match-pct{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .match-label{font-size:.6rem;font-weight:700;color:var(--muted);letter-spacing:.06em}
+    .action-title{font-size:.82rem;font-weight:700;color:var(--muted);text-align:center;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.06em}
+
+    .quick-stat{display:flex;justify-content:space-around;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+    .qs-item{text-align:center}
+    .qs-num{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--dark)}
+    .qs-lbl{font-size:.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+
+    /* ══ CHAT PREVIEW ══ */
+    .chat-bubble{background:var(--pink-pale);border-radius:14px 14px 14px 0;padding:.7rem 1rem;font-size:.83rem;color:var(--text);margin-bottom:.5rem;max-width:85%}
+    .chat-bubble.mine{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border-radius:14px 14px 0 14px;margin-left:auto}
+    .chat-time{font-size:.65rem;color:var(--muted);margin-top:.2rem}
+
+    /* ══ INTERESTS LIST ══ */
+    .interest-item{display:flex;align-items:center;gap:.9rem;padding:.75rem 0;border-bottom:1px solid #FBF0F8}
+    .interest-item:last-child{border-bottom:none}
+    .i-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+    .i-name{font-weight:700;font-size:.9rem;color:var(--dark)}
+    .i-meta{font-size:.76rem;color:var(--muted)}
+    .i-status{margin-left:auto;flex-shrink:0}
+    .status-pill{font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:50px}
+    .status-pending{background:#FFF3E0;color:#E65100}
+    .status-accepted{background:var(--green-pale);color:var(--green)}
+    .status-rejected{background:#FFF0F0;color:#C62828}
+
+    /* ══ SUBSCRIPTION BANNER ══ */
+    .sub-banner{background:linear-gradient(135deg,var(--pink),#C2177A);border-radius:var(--radius-lg);padding:1.5rem;color:#fff;position:relative;overflow:hidden}
+    .sub-banner::before{content:'👑';position:absolute;right:-10px;top:-10px;font-size:6rem;opacity:.12}
+    .sub-banner h6{color:#fff;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+    .sub-banner p{font-size:.83rem;color:rgba(255,255,255,.78);margin-bottom:.9rem}
+
+    /* ══ PRIVACY TOGGLES ══ */
+    .privacy-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid #FBF0F8}
+    .privacy-row:last-child{border-bottom:none;padding-bottom:0}
+    .privacy-label{font-size:.88rem;font-weight:600;color:var(--text)}
+    .privacy-sub{font-size:.75rem;color:var(--muted);margin-top:.08rem}
+    .form-check-input:checked{background-color:var(--pink);border-color:var(--pink)}
+
+    /* ══ SECTION PANE (tab content) ══ */
+    .tab-pane-custom{display:none}
+    .tab-pane-custom.active{display:block}
+
+    /* ══ DESKTOP FOOTER ══ */
+    footer.desktop-footer{background:var(--dark);color:rgba(255,255,255,.38);padding:14px 0;text-align:center;font-size:.79rem}
+    @media(max-width:767.98px){footer.desktop-footer{display:none}}
+
+    /* ══ MOBILE STICKY NAV ══ */
+    .mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid #F0E6F6;z-index:1100;justify-content:space-around;align-items:center;padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(233,30,140,.1)}
+    @media(max-width:767.98px){.mobile-bottom-nav{display:flex}body{padding-bottom:74px}}
+    .mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:.15rem;flex:1;cursor:pointer;border-radius:14px;transition:all .22s;text-decoration:none!important}
+    .mob-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:box-shadow .25s,transform .22s}
+    .mob-label{font-size:.62rem;font-weight:700;letter-spacing:.04em;transition:color .22s}
+    .mob-nav-item.home .mob-icon{background:linear-gradient(135deg,#FDE8F4,#FFB3D9);color:var(--pink)}.mob-nav-item.home .mob-label{color:var(--pink)}
+    .mob-nav-item.profiles .mob-icon{background:linear-gradient(135deg,#E5F7F0,#B3EDD8);color:var(--green)}.mob-nav-item.profiles .mob-label{color:var(--green)}
+    .mob-nav-item.matches .mob-icon{background:linear-gradient(135deg,#FFF3E0,#FFD599);color:#E65100}.mob-nav-item.matches .mob-label{color:#E65100}
+    .mob-nav-item.account .mob-icon{background:linear-gradient(135deg,#EDE7F6,#C5B3E6);color:#6A1B9A}.mob-nav-item.account .mob-label{color:#6A1B9A}
+    .mob-nav-item.home:hover .mob-icon,.mob-nav-item.home.active .mob-icon{box-shadow:0 0 18px 7px rgba(233,30,140,.38);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.profiles:hover .mob-icon,.mob-nav-item.profiles.active .mob-icon{box-shadow:0 0 18px 7px rgba(27,140,94,.35);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.matches:hover .mob-icon,.mob-nav-item.matches.active .mob-icon{box-shadow:0 0 18px 7px rgba(230,81,0,.30);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.account:hover .mob-icon,.mob-nav-item.account.active .mob-icon{box-shadow:0 0 18px 7px rgba(106,27,154,.30);transform:translateY(-5px) scale(1.12)}
+
+    #backTop{position:fixed;bottom:88px;right:18px;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--green));color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;z-index:999;box-shadow:0 4px 16px rgba(233,30,140,.3)}
+    #backTop.visible{opacity:1;transform:translateY(0)}
+    @media(min-width:768px){#backTop{bottom:24px;right:24px}}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .tab-pane-custom.active{animation:fadeIn .3s ease}
+  
+
+    /* ════ SHARED NAV/FOOTER CSS ════ */
+    .site-nav{background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:2px solid transparent;padding:.5rem 0;position:sticky;top:0;z-index:1000;transition:border-color .35s,box-shadow .35s}
+    .site-nav.scrolled{border-bottom-color:var(--pink);box-shadow:0 4px 22px rgba(233,30,140,.18)}
+    .nav-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--pink),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;gap:.05rem;list-style:none;margin:0;padding:0}
+    .nav-menu a{font-size:.84rem;font-weight:500;color:var(--text);padding:.3rem .72rem;border-radius:8px;transition:background .18s,color .18s;white-space:nowrap}
+    .nav-menu a:hover,.nav-menu a.active{background:var(--pink-pale);color:var(--pink)}
+    .lang-btn{font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;border:1.5px solid #EDD7EA;border-radius:7px;padding:.26rem .6rem;transition:all .18s;background:transparent}
+    .lang-btn:hover,.lang-btn.active{border-color:var(--pink);color:var(--pink);background:var(--pink-pale)}
+    .nav-login-btn{border:1.5px solid var(--pink);color:var(--pink);border-radius:50px;padding:.28rem .95rem;font-weight:600;font-size:.8rem;background:transparent;cursor:pointer;transition:all .18s;white-space:nowrap}
+    .nav-login-btn:hover{background:var(--pink);color:#fff}
+    .nav-reg-btn{background:linear-gradient(135deg,var(--pink),var(--pink-light));color:#fff;border:none;border-radius:50px;padding:.3rem .95rem;font-weight:600;font-size:.8rem;cursor:pointer;transition:transform .18s,box-shadow .18s;box-shadow:0 3px 12px rgba(233,30,140,.25);white-space:nowrap}
+    .nav-reg-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(233,30,140,.32)}
+    .nav-notif-btn{position:relative;background:var(--pink-pale);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:.9rem;transition:background .18s;flex-shrink:0}
+    .nav-notif-btn:hover{background:var(--pink);color:#fff}
+    .notif-dot{position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:#FF3B3B;border:1.5px solid #fff}
+    /* Mobile sticky logo only */
+    .mob-nav-sticky{display:none;position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:2px solid transparent;padding:.45rem 0;text-align:center;transition:border-color .35s,box-shadow .35s}
+    .mob-nav-sticky.scrolled{border-bottom-color:var(--pink);box-shadow:0 3px 16px rgba(233,30,140,.15)}
+    /* Lang bar — NOT sticky */
+    .mob-lang-bar{display:none;justify-content:center;gap:.5rem;padding:.35rem 0;background:#fff;border-bottom:1px solid #F5EDF9}
+    @media(max-width:991.98px){.site-nav{display:none!important}.mob-nav-sticky{display:block}.mob-lang-bar{display:flex}}
+    @media(min-width:992px){.mob-nav-sticky,.mob-lang-bar{display:none!important}}
+    /* Desktop footer */
+    .desktop-footer{background:var(--dark);padding:18px 0 14px}
+    @media(max-width:767.98px){.desktop-footer{display:none}}
+    .footer-nav-links{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:.55rem}
+    .footer-nav-links a{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.5);padding:0 1.4rem;transition:color .18s}
+    .footer-nav-links a:hover{color:var(--pink-light)}
+    .footer-nav-links a+a{border-left:1px solid rgba(255,255,255,.12)}
+    .footer-copy{font-size:.74rem;color:rgba(255,255,255,.28);text-align:center}
+    /* Mobile bottom nav */
+    .mob-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid #F0E6F6;z-index:1100;justify-content:space-around;align-items:center;padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(233,30,140,.1)}
+    @media(max-width:767.98px){.mob-bottom-nav{display:flex}body{padding-bottom:72px}}
+    .mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:.14rem;flex:1;cursor:pointer;border-radius:14px;transition:all .22s;text-decoration:none!important;border:none;background:transparent}
+    .mob-nav-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;transition:box-shadow .25s,transform .22s}
+    .mob-nav-label{font-size:.6rem;font-weight:700;letter-spacing:.04em;transition:color .22s}
+    .mob-nav-item.n-home .mob-nav-icon{background:linear-gradient(135deg,#FDE8F4,#FFB3D9);color:var(--pink)}.mob-nav-item.n-home .mob-nav-label{color:var(--pink)}
+    .mob-nav-item.n-profiles .mob-nav-icon{background:linear-gradient(135deg,#E5F7F0,#B3EDD8);color:var(--green)}.mob-nav-item.n-profiles .mob-nav-label{color:var(--green)}
+    .mob-nav-item.n-matches .mob-nav-icon{background:linear-gradient(135deg,#FFF3E0,#FFD599);color:#E65100}.mob-nav-item.n-matches .mob-nav-label{color:#E65100}
+    .mob-nav-item.n-account .mob-nav-icon{background:linear-gradient(135deg,#EDE7F6,#C5B3E6);color:#6A1B9A}.mob-nav-item.n-account .mob-nav-label{color:#6A1B9A}
+    .mob-nav-item.n-home:hover .mob-nav-icon,.mob-nav-item.n-home.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(233,30,140,.36);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.n-profiles:hover .mob-nav-icon,.mob-nav-item.n-profiles.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(27,140,94,.33);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.n-matches:hover .mob-nav-icon,.mob-nav-item.n-matches.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(230,81,0,.28);transform:translateY(-5px) scale(1.12)}
+    .mob-nav-item.n-account:hover .mob-nav-icon,.mob-nav-item.n-account.active .mob-nav-icon{box-shadow:0 0 16px 6px rgba(106,27,154,.28);transform:translateY(-5px) scale(1.12)}
+    /* Account drawer */
+    .acct-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1200;backdrop-filter:blur(4px)}
+    .acct-overlay.open{display:block}
+    .acct-drawer{position:fixed;bottom:0;left:0;right:0;background:#fff;z-index:1210;border-radius:22px 22px 0 0;transform:translateY(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);padding:0 0 calc(20px + env(safe-area-inset-bottom));box-shadow:0 -8px 40px rgba(233,30,140,.14)}
+    .acct-drawer.open{transform:translateY(0)}
+    .acct-drawer-handle{width:40px;height:4px;background:#EDD7EA;border-radius:4px;margin:12px auto 8px}
+    .acct-drawer-header{display:flex;align-items:center;gap:.9rem;padding:.7rem 1.2rem 1rem;border-bottom:1px solid #F5EDF9}
+    .acct-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--pink-pale),var(--green-pale));display:flex;align-items:center;justify-content:center;font-size:1.6rem;border:2px solid var(--pink-pale)}
+    .acct-name{font-weight:700;font-size:.95rem;color:var(--dark)}
+    .acct-id{font-size:.72rem;color:var(--muted)}
+    .acct-menu-item{display:flex;align-items:center;gap:.85rem;padding:.7rem 1.4rem;font-size:.9rem;font-weight:500;color:var(--text);transition:background .15s;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;text-decoration:none}
+    .acct-menu-item:hover{background:var(--pink-pale)}
+    .acct-menu-item i{font-size:1.05rem;width:22px;text-align:center}
+    .acct-menu-item.danger{color:#C62828}
+    .acct-menu-item.danger:hover{background:#FFF0F0}
+    #backTop{position:fixed;bottom:88px;right:16px;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--green));color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;z-index:999;box-shadow:0 4px 16px rgba(233,30,140,.3)}
+    #backTop.visible{opacity:1;transform:translateY(0)}
+    @media(min-width:768px){#backTop{bottom:24px;right:22px}}
+
+  </style>
+</head>
+<body>
+
+<!-- ════════ DESKTOP NAVBAR ════════ -->
+<nav class="site-nav" id="mainNav">
+  <div class="container d-flex align-items-center gap-3">
+    <a class="nav-brand me-2" href="index.html">💍 Namma Matrimony</a>
+    <ul class="nav-menu me-auto">
+      <li><a href="index.html" class="">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="search.html" class="active">Profiles</a></li>
+      <li><a href="#matches">Matches</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="d-flex align-items-center gap-2">
+      <button class="lang-btn active" onclick="switchLang(this,'en')">EN</button>
+      <button class="lang-btn" onclick="switchLang(this,'ta')">த</button>
+      <div id="desktopLoggedOut" class="d-flex align-items-center gap-2">
+        <button class="nav-login-btn" onclick="simulateLogin()">Login</button>
+        <button class="nav-reg-btn">Register Free</button>
+      </div>
+      <div id="desktopLoggedIn" class="d-flex align-items-center gap-2" style="display:none!important">
+        <button class="nav-notif-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></button>
+        <button class="nav-login-btn" onclick="simulateLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Mobile: sticky logo only -->
+<div class="mob-nav-sticky" id="mobNavSticky">
+  <a class="nav-brand" href="index.html" style="font-size:1.15rem;">💍 Namma Matrimony</a>
+</div>
+<!-- Lang bar: NOT sticky, scrolls with page -->
+<div class="mob-lang-bar">
+  <button class="lang-btn active" onclick="switchLang(this,'en')">EN</button>
+  <button class="lang-btn" onclick="switchLang(this,'ta')">த</button>
+</div>
+
+<!-- ════════ PROFILE HERO BANNER ════════ -->
+<section class="profile-banner">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row align-items-end g-4 pb-0">
+      <!-- Avatar + name -->
+      <div class="col-lg-8">
+        <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-end gap-4 mb-3">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar">👩</div>
+            <div class="online-dot" title="Online now"></div>
+            <div class="profile-premium-badge">⭐ Premium</div>
+          </div>
+          <div class="text-center text-sm-start">
+            <div class="profile-id-badge">NM-2024-08731</div>
+            <h1 class="profile-name-hero">Priya Ramasubramanian</h1>
+            <div class="profile-meta-hero">
+              <span><i class="bi bi-calendar3"></i> 26 yrs</span>
+              <span><i class="bi bi-geo-alt-fill"></i> Chennai, Tamil Nadu</span>
+              <span><i class="bi bi-briefcase-fill"></i> Software Engineer</span>
+              <span><i class="bi bi-mortarboard-fill"></i> B.Tech – IIT Madras</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-sm-start">
+              <span class="verified-tag"><i class="bi bi-patch-check-fill"></i> Verified Profile</span>
+              <span class="tag-pill tag-pink">Hindu</span>
+              <span class="tag-pill tag-green">Iyer</span>
+              <span class="tag-pill tag-dark">Never Married</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quick action btns (desktop) -->
+      <div class="col-lg-4 d-none d-lg-flex justify-content-end gap-2 pb-3">
+        <button class="btn btn-pink" onclick="sendInterest(this)"><i class="bi bi-heart me-1"></i>Send Interest</button>
+        <button class="btn btn-outline-green" style="border-color:rgba(39,196,127,.6);color:var(--green-light);" onclick="shortlistProfile(this)"><i class="bi bi-bookmark me-1"></i>Shortlist</button>
+      </div>
+    </div>
+
+    <!-- Profile completion progress (own profile view) -->
+    <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:.8rem 1.2rem;margin-bottom:0;border:1px solid rgba(255,255,255,.1);">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span style="font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7);">Profile Completeness</span>
+        <span style="font-size:.8rem;font-weight:800;color:var(--green-light);">78%</span>
+      </div>
+      <div style="height:6px;border-radius:50px;background:rgba(255,255,255,.12);">
+        <div style="width:78%;height:100%;border-radius:50px;background:linear-gradient(90deg,var(--pink),var(--green-light));"></div>
+      </div>
+      <div style="font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.4rem;">Add horoscope & family details to reach 100% and get 3× more matches</div>
+    </div>
+
+    <!-- Tab Strip -->
+    <div class="profile-tabs" id="profileTabs">
+      <div class="ptab active" onclick="switchTab('overview',this)">Overview</div>
+      <div class="ptab" onclick="switchTab('photos',this)">Photos</div>
+      <div class="ptab" onclick="switchTab('horoscope',this)">Horoscope</div>
+      <div class="ptab" onclick="switchTab('interests',this)">Interests <span style="background:var(--pink);color:#fff;font-size:.65rem;padding:.1rem .45rem;border-radius:50px;margin-left:.3rem;">5</span></div>
+      <div class="ptab" onclick="switchTab('chat',this)">Chat</div>
+      <div class="ptab" onclick="switchTab('privacy',this)">Privacy</div>
+      <div class="ptab" onclick="switchTab('subscription',this)">Subscription</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ MAIN CONTENT ════════ -->
+<div class="main-content">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- LEFT / MAIN COLUMN -->
+      <div class="col-lg-8">
+
+        <!-- ── OVERVIEW TAB ── -->
+        <div class="tab-pane-custom active" id="tab-overview">
+
+          <!-- Basic Info -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-person-fill" style="color:var(--pink);"></i> Basic Information</div>
+              <button class="card-edit-btn" onclick="editSection('basic')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Full Name</span><span class="info-value">Priya Ramasubramanian</span></div>
+            <div class="info-row"><span class="info-label">Profile For</span><span class="info-value">Self</span></div>
+            <div class="info-row"><span class="info-label">Date of Birth</span><span class="info-value">12 March 1998 (26 yrs)</span></div>
+            <div class="info-row"><span class="info-label">Height</span><span class="info-value">5' 4" (163 cm)</span></div>
+            <div class="info-row"><span class="info-label">Weight</span><span class="info-value">52 kg</span></div>
+            <div class="info-row"><span class="info-label">Body Type</span><span class="info-value">Slim</span></div>
+            <div class="info-row"><span class="info-label">Complexion</span><span class="info-value">Fair</span></div>
+            <div class="info-row"><span class="info-label">Marital Status</span><span class="info-value">Never Married</span></div>
+            <div class="info-row"><span class="info-label">Mother Tongue</span><span class="info-value">Tamil</span></div>
+            <div class="info-row"><span class="info-label">Languages</span><span class="info-value">Tamil, English, Hindi</span></div>
+            <div class="info-row"><span class="info-label">About Me</span><span class="info-value" style="line-height:1.65;">I am a cheerful, family-oriented person working as a Software Engineer in Chennai. I enjoy reading, cooking and classical music. Looking for a kind, well-settled life partner who values family and culture.</span></div>
+          </div>
+
+          <!-- Religion & Caste -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-flower1" style="color:var(--pink);"></i> Religion & Community</div>
+              <button class="card-edit-btn" onclick="editSection('religion')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Religion</span><span class="info-value">Hindu</span></div>
+            <div class="info-row"><span class="info-label">Caste</span><span class="info-value">Iyer (Brahmin)</span></div>
+            <div class="info-row"><span class="info-label">Sub Caste</span><span class="info-value">Vadama</span></div>
+            <div class="info-row"><span class="info-label">Gotram</span><span class="info-value">Kaundinya</span></div>
+            <div class="info-row"><span class="info-label">Star / Nakshatra</span><span class="info-value">Thiruvadhirai (Aarudra)</span></div>
+            <div class="info-row"><span class="info-label">Rasi</span><span class="info-value">Mithuna (Gemini)</span></div>
+            <div class="info-row"><span class="info-label">Dhosam</span><span class="info-value">No Dhosam</span></div>
+            <div class="info-row"><span class="info-label">Caste Pref.</span><span class="info-value">Iyer / Iyengar preferred; open to Brahmin</span></div>
+          </div>
+
+          <!-- Education & Career -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-mortarboard-fill" style="color:var(--green);"></i> Education & Career</div>
+              <button class="card-edit-btn" onclick="editSection('career')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Education</span><span class="info-value">B.Tech – Computer Science</span></div>
+            <div class="info-row"><span class="info-label">College</span><span class="info-value">IIT Madras, Chennai</span></div>
+            <div class="info-row"><span class="info-label">Occupation</span><span class="info-value">Software Engineer</span></div>
+            <div class="info-row"><span class="info-label">Employer</span><span class="info-value">Infosys Technologies, Chennai</span></div>
+            <div class="info-row"><span class="info-label">Annual Income</span><span class="info-value">₹8 – 10 Lakhs per annum</span></div>
+            <div class="info-row"><span class="info-label">Work Location</span><span class="info-value">Chennai, Tamil Nadu</span></div>
+            <div class="info-row"><span class="info-label">Work Nature</span><span class="info-value">Private Sector – IT</span></div>
+          </div>
+
+          <!-- Location -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-geo-alt-fill" style="color:var(--pink);"></i> Location Details</div>
+              <button class="card-edit-btn" onclick="editSection('location')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Country</span><span class="info-value">India</span></div>
+            <div class="info-row"><span class="info-label">State</span><span class="info-value">Tamil Nadu</span></div>
+            <div class="info-row"><span class="info-label">City</span><span class="info-value">Chennai (T. Nagar)</span></div>
+            <div class="info-row"><span class="info-label">Residence</span><span class="info-value">Own House</span></div>
+            <div class="info-row"><span class="info-label">Willing to Relocate</span><span class="info-value">Yes – Within Tamil Nadu</span></div>
+          </div>
+
+          <!-- Family Details -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-people-fill" style="color:var(--green);"></i> Family Details</div>
+              <button class="card-edit-btn" onclick="editSection('family')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Family Type</span><span class="info-value">Nuclear Family</span></div>
+            <div class="info-row"><span class="info-label">Family Status</span><span class="info-value">Middle Class</span></div>
+            <div class="info-row"><span class="info-label">Father</span><span class="info-value">Retired – Government Officer</span></div>
+            <div class="info-row"><span class="info-label">Mother</span><span class="info-value">Home Maker</span></div>
+            <div class="info-row"><span class="info-label">Siblings</span><span class="info-value">1 Brother – Married</span></div>
+            <div class="info-row"><span class="info-label">Native Place</span><span class="info-value">Thanjavur, Tamil Nadu</span></div>
+            <div class="info-row"><span class="info-label">Family Values</span><span class="info-value">Traditional with Modern Values</span></div>
+          </div>
+
+          <!-- Lifestyle -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-heart-pulse-fill" style="color:var(--pink);"></i> Lifestyle & Interests</div>
+              <button class="card-edit-btn" onclick="editSection('lifestyle')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Diet</span><span class="info-value">Vegetarian</span></div>
+            <div class="info-row"><span class="info-label">Smoking</span><span class="info-value">Non-Smoker</span></div>
+            <div class="info-row"><span class="info-label">Drinking</span><span class="info-value">Non-Drinker</span></div>
+            <div class="info-row"><span class="info-label">Hobbies</span>
+              <span class="info-value">
+                <span class="tag-pill tag-pink">Classical Music</span>
+                <span class="tag-pill tag-green">Cooking</span>
+                <span class="tag-pill tag-dark">Reading</span>
+                <span class="tag-pill tag-pink">Travelling</span>
+                <span class="tag-pill tag-green">Yoga</span>
+              </span>
+            </div>
+            <div class="info-row"><span class="info-label">Sports</span><span class="info-value">Badminton, Swimming</span></div>
+          </div>
+
+          <!-- Partner Preferences -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-search-heart" style="color:var(--green);"></i> Partner Preferences</div>
+              <button class="card-edit-btn" onclick="editSection('preferences')"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="info-row"><span class="info-label">Age Range</span><span class="info-value">27 – 34 years</span></div>
+            <div class="info-row"><span class="info-label">Height Range</span><span class="info-value">5'6" – 6'0"</span></div>
+            <div class="info-row"><span class="info-label">Education</span><span class="info-value">Graduate and above</span></div>
+            <div class="info-row"><span class="info-label">Profession</span><span class="info-value">Any employed professional</span></div>
+            <div class="info-row"><span class="info-label">Income</span><span class="info-value">₹6 Lakhs and above</span></div>
+            <div class="info-row"><span class="info-label">Location</span><span class="info-value">Tamil Nadu preferred; open to other states</span></div>
+            <div class="info-row"><span class="info-label">Caste</span><span class="info-value">Iyer / Iyengar preferred</span></div>
+            <div class="info-row"><span class="info-label">Dhosam</span><span class="info-value">Doesn't matter</span></div>
+          </div>
+
+          <!-- Contact Details (Premium locked) -->
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-telephone-fill" style="color:var(--pink);"></i> Contact Details</div>
+              <span style="font-size:.75rem;font-weight:700;color:var(--green);background:var(--green-pale);padding:.2rem .6rem;border-radius:6px;">Premium</span>
+            </div>
+            <div style="background:var(--pink-pale);border-radius:12px;padding:1.2rem;text-align:center;">
+              <div style="font-size:2rem;margin-bottom:.5rem;">🔒</div>
+              <div style="font-weight:700;color:var(--dark);margin-bottom:.3rem;">Contact details are hidden</div>
+              <div style="font-size:.83rem;color:var(--muted);margin-bottom:.9rem;">Upgrade to Premium to view mobile number, email and WhatsApp</div>
+              <a href="index.html#plans" class="btn btn-pink btn-sm">Unlock Contact Details</a>
+            </div>
+          </div>
+
+        </div><!-- /overview -->
+
+        <!-- ── PHOTOS TAB ── -->
+        <div class="tab-pane-custom" id="tab-photos">
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-images" style="color:var(--pink);"></i> My Photos <span style="font-size:.78rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">(6 / 10 uploaded)</span></div>
+              <button class="card-edit-btn"><i class="bi bi-plus-circle me-1"></i>Add Photo</button>
+            </div>
+            <div class="photo-grid">
+              <div class="photo-cell" style="font-size:4rem;">👩<div class="photo-overlay"><i class="bi bi-eye"></i></div></div>
+              <div class="photo-cell" style="font-size:4rem;background:linear-gradient(135deg,#E5F7F0,#FDE8F4);">🙋‍♀️<div class="photo-overlay"><i class="bi bi-eye"></i></div></div>
+              <div class="photo-cell" style="font-size:4rem;background:linear-gradient(135deg,#FDE8F4,#EDE7F6);">👩‍💼<div class="photo-overlay"><i class="bi bi-eye"></i></div><div class="photo-private-badge"><i class="bi bi-lock-fill"></i> Private</div></div>
+              <div class="photo-cell" style="font-size:4rem;background:linear-gradient(135deg,var(--green-pale),var(--pink-pale));">🤗<div class="photo-overlay"><i class="bi bi-eye"></i></div></div>
+              <div class="photo-cell" style="font-size:4rem;background:linear-gradient(135deg,#EDE7F6,var(--pink-pale));">👩‍🎓<div class="photo-overlay"><i class="bi bi-eye"></i></div></div>
+              <div class="photo-cell add-more"><i class="bi bi-plus-circle-fill"></i><span>Add More</span></div>
+            </div>
+            <div class="mt-3 p-3" style="background:var(--green-pale);border-radius:12px;">
+              <div style="font-size:.82rem;color:var(--green);font-weight:600;"><i class="bi bi-info-circle me-1"></i>Photo Privacy</div>
+              <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">Private photos are visible only to accepted connections. Drag to reorder.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── HOROSCOPE TAB ── -->
+        <div class="tab-pane-custom" id="tab-horoscope">
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-stars" style="color:var(--pink);"></i> Tamil ஜாதக Chart</div>
+              <button class="card-edit-btn"><i class="bi bi-pencil me-1"></i>Edit</button>
+            </div>
+            <div class="horo-outer mb-3">
+              <div class="horo-title">Rasi (ராசி) Chart</div>
+              <div class="horo-grid">
+                <div class="horo-cell filled"><span>12</span><span class="planet">சூரி</span></div>
+                <div class="horo-cell filled"><span>1</span><span class="planet">செவ்</span></div>
+                <div class="horo-cell"><span>2</span><span class="planet">குரு</span></div>
+                <div class="horo-cell filled"><span>3</span><span class="planet">சனி</span></div>
+                <div class="horo-cell"><span>11</span><span class="planet">ராகு</span></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell filled"><span>4</span><span class="planet">சுக்</span></div>
+                <div class="horo-cell filled"><span>10</span><span class="planet">புத</span></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell"><span>5</span><span class="planet">கேது</span></div>
+                <div class="horo-cell"><span>9</span></div>
+                <div class="horo-cell filled"><span>8</span><span class="planet">சந்</span></div>
+                <div class="horo-cell filled"><span>7</span><span class="planet">மங்</span></div>
+                <div class="horo-cell"><span>6</span><span class="planet">லக்</span></div>
+              </div>
+              <div class="horo-info">
+                <div class="horo-info-box"><div class="label">Rasi (ராசி)</div><div class="value">மிதுனம் (Gemini)</div></div>
+                <div class="horo-info-box"><div class="label">Nakshatra</div><div class="value">திருவாதிரை</div></div>
+                <div class="horo-info-box"><div class="label">Lagnam</div><div class="value">கடகம் (Cancer)</div></div>
+                <div class="horo-info-box"><div class="label">Padam</div><div class="value">2nd Padam</div></div>
+              </div>
+            </div>
+            <div class="horo-outer">
+              <div class="horo-title">Navamsam (நவாம்சம்) Chart</div>
+              <div class="horo-grid">
+                <div class="horo-cell"><span>12</span></div>
+                <div class="horo-cell filled"><span>1</span><span class="planet">சூரி</span></div>
+                <div class="horo-cell filled"><span>2</span><span class="planet">சனி</span></div>
+                <div class="horo-cell"><span>3</span></div>
+                <div class="horo-cell filled"><span>11</span><span class="planet">சுக்</span></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell"><span>4</span></div>
+                <div class="horo-cell"><span>10</span></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell center-cell"></div>
+                <div class="horo-cell filled"><span>5</span><span class="planet">ராகு</span></div>
+                <div class="horo-cell filled"><span>9</span><span class="planet">புத</span></div>
+                <div class="horo-cell"><span>8</span></div>
+                <div class="horo-cell filled"><span>7</span><span class="planet">குரு</span></div>
+                <div class="horo-cell"><span>6</span></div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div style="font-size:.82rem;color:var(--muted);background:var(--pink-pale);border-radius:10px;padding:.8rem 1rem;">
+                <i class="bi bi-info-circle me-1" style="color:var(--pink);"></i>
+                <strong style="color:var(--text);">Horoscope Matching:</strong> Full horoscope PDF download available for Premium members. Our system auto-matches based on Rasi, Nakshatra and Lagnam compatibility.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── INTERESTS TAB ── -->
+        <div class="tab-pane-custom" id="tab-interests">
+          <div class="info-card">
+            <div class="d-flex gap-2 mb-3 flex-wrap">
+              <button class="btn btn-pink btn-sm" onclick="filterInterest(this,'received')">Received (3)</button>
+              <button class="btn btn-outline-pink btn-sm" onclick="filterInterest(this,'sent')">Sent (5)</button>
+              <button class="btn btn-outline-pink btn-sm" onclick="filterInterest(this,'accepted')">Accepted (2)</button>
+              <button class="btn btn-outline-pink btn-sm" onclick="filterInterest(this,'shortlisted')">Shortlisted (4)</button>
+            </div>
+            <div id="interestList">
+              <div class="interest-item">
+                <div class="i-avatar">👨</div>
+                <div class="flex-grow-1">
+                  <div class="i-name">Karthik M. <span style="font-size:.7rem;color:var(--muted);">NM-2024-05231</span></div>
+                  <div class="i-meta"><i class="bi bi-geo-alt"></i> Coimbatore · 29 yrs · Doctor · Vellalar</div>
+                </div>
+                <div class="i-status d-flex flex-column gap-1 align-items-end">
+                  <span class="status-pill status-pending">Pending</span>
+                  <div class="d-flex gap-1 mt-1">
+                    <button class="btn btn-green btn-sm py-0 px-2" style="font-size:.72rem;" onclick="acceptInterest(this)">Accept</button>
+                    <button class="btn btn-outline-pink btn-sm py-0 px-2" style="font-size:.72rem;" onclick="rejectInterest(this)">Decline</button>
+                  </div>
+                </div>
+              </div>
+              <div class="interest-item">
+                <div class="i-avatar">👨</div>
+                <div class="flex-grow-1">
+                  <div class="i-name">Rajesh K. <span style="font-size:.7rem;color:var(--muted);">NM-2024-09112</span></div>
+                  <div class="i-meta"><i class="bi bi-geo-alt"></i> Trichy · 31 yrs · CA · Nadar</div>
+                </div>
+                <div class="i-status">
+                  <span class="status-pill status-accepted">✔ Accepted</span>
+                </div>
+              </div>
+              <div class="interest-item">
+                <div class="i-avatar">👨</div>
+                <div class="flex-grow-1">
+                  <div class="i-name">Vivek S. <span style="font-size:.7rem;color:var(--muted);">NM-2024-07654</span></div>
+                  <div class="i-meta"><i class="bi bi-geo-alt"></i> Madurai · 28 yrs · Engineer · Iyer</div>
+                </div>
+                <div class="i-status d-flex flex-column gap-1 align-items-end">
+                  <span class="status-pill status-pending">Pending</span>
+                  <div class="d-flex gap-1 mt-1">
+                    <button class="btn btn-green btn-sm py-0 px-2" style="font-size:.72rem;" onclick="acceptInterest(this)">Accept</button>
+                    <button class="btn btn-outline-pink btn-sm py-0 px-2" style="font-size:.72rem;" onclick="rejectInterest(this)">Decline</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CHAT TAB ── -->
+        <div class="tab-pane-custom" id="tab-chat">
+          <div class="info-card" style="padding:0;overflow:hidden;">
+            <div style="padding:1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem;">
+              <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--green-pale),var(--pink-pale));display:flex;align-items:center;justify-content:center;font-size:1.4rem;">👨</div>
+              <div>
+                <div style="font-weight:700;font-size:.9rem;color:var(--dark);">Rajesh K.</div>
+                <div style="font-size:.72rem;color:var(--green);"><i class="bi bi-circle-fill" style="font-size:.5rem;"></i> Online</div>
+              </div>
+              <div class="ms-auto d-flex gap-2">
+                <button class="btn btn-outline-pink btn-sm py-1"><i class="bi bi-telephone"></i></button>
+                <button class="btn btn-outline-pink btn-sm py-1"><i class="bi bi-three-dots-vertical"></i></button>
+              </div>
+            </div>
+            <div style="padding:1.2rem;min-height:280px;background:linear-gradient(135deg,#FBF0F8,#EFF9F5);">
+              <div class="chat-bubble">Hi Priya! I came across your profile on Namma Matrimony and found it very impressive. 🙏</div>
+              <div class="chat-time ms-1">Yesterday, 4:32 PM ✓✓</div>
+              <div class="chat-bubble mine mt-3">Vanakkam Rajesh! Thank you for your kind words. I had a look at your profile too. 😊</div>
+              <div class="chat-time text-end me-1">Yesterday, 6:15 PM ✓✓</div>
+              <div class="chat-bubble mt-3">Could we schedule a call sometime this weekend? My family would also like to connect.</div>
+              <div class="chat-time ms-1">Today, 10:02 AM ✓</div>
+            </div>
+            <div style="padding:.8rem 1rem;border-top:1px solid var(--border);display:flex;gap:.6rem;">
+              <input type="text" id="chatInput" placeholder="Type a message…" style="flex:1;border:1.5px solid #EDD7EA;border-radius:50px;padding:.55rem 1rem;font-size:.88rem;outline:none;" onkeydown="if(event.key==='Enter')sendChat()"/>
+              <button class="btn btn-pink" style="border-radius:50px;padding:.55rem 1rem;" onclick="sendChat()"><i class="bi bi-send-fill"></i></button>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="card-title">💬 All Conversations</div>
+            <div class="interest-item">
+              <div class="i-avatar">👨</div>
+              <div class="flex-grow-1"><div class="i-name">Rajesh K.</div><div class="i-meta" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Could we schedule a call…</div></div>
+              <div style="font-size:.72rem;color:var(--muted);text-align:right;">10:02 AM<br><span style="background:var(--pink);color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;">1</span></div>
+            </div>
+            <div class="interest-item">
+              <div class="i-avatar">👨</div>
+              <div class="flex-grow-1"><div class="i-name">Vivek S.</div><div class="i-meta" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Thank you for accepting my interest!</div></div>
+              <div style="font-size:.72rem;color:var(--muted);">Yesterday</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRIVACY TAB ── -->
+        <div class="tab-pane-custom" id="tab-privacy">
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-shield-lock-fill" style="color:var(--green);"></i> Privacy Settings</div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Show Profile to All</div><div class="privacy-sub">Your profile is visible to all registered members</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked onchange="togglePrivacy(this,'profile')"/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Photo Visible to All</div><div class="privacy-sub">Photos visible to all members (not just accepted)</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" onchange="togglePrivacy(this,'photos')"/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Show Contact Details</div><div class="privacy-sub">Mobile & email visible to Premium members</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked onchange="togglePrivacy(this,'contact')"/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Horoscope Public</div><div class="privacy-sub">Horoscope chart visible without request</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" onchange="togglePrivacy(this,'horoscope')"/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Show Online Status</div><div class="privacy-sub">Others can see when you were last active</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked onchange="togglePrivacy(this,'online')"/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Allow Interest from All</div><div class="privacy-sub">If off, only verified profiles can send interest</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked onchange="togglePrivacy(this,'interest')"/></div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="card-title-row">
+              <div class="card-title"><i class="bi bi-bell-fill" style="color:var(--pink);"></i> Notification Settings</div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Interest Received</div><div class="privacy-sub">Get notified when someone sends interest</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">New Message</div><div class="privacy-sub">Notify when you receive a new chat message</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Profile Views</div><div class="privacy-sub">Know when someone views your profile</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">Email Notifications</div><div class="privacy-sub">Receive daily match alerts via email</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox"/></div>
+            </div>
+            <div class="privacy-row">
+              <div><div class="privacy-label">SMS Alerts</div><div class="privacy-sub">Important alerts via SMS to registered number</div></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked/></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SUBSCRIPTION TAB ── -->
+        <div class="tab-pane-custom" id="tab-subscription">
+          <div class="sub-banner mb-3">
+            <h6>⭐ You are on Premium Plan</h6>
+            <p>Valid until <strong>31 December 2025</strong>. Enjoy unlimited interests, chat and contact access.</p>
+            <button class="btn btn-outline-pink" style="border-color:rgba(255,255,255,.5);color:#fff;" onclick="">Renew / Upgrade</button>
+          </div>
+          <div class="info-card">
+            <div class="card-title mb-3"><i class="bi bi-check2-circle" style="color:var(--green);"></i> Your Plan Benefits</div>
+            <div class="plan-feature d-flex gap-2 align-items-center mb-2"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i><span style="font-size:.9rem;">Unlimited Interest Sends</span></div>
+            <div class="plan-feature d-flex gap-2 align-items-center mb-2"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i><span style="font-size:.9rem;">Unlimited Chat Access</span></div>
+            <div class="plan-feature d-flex gap-2 align-items-center mb-2"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i><span style="font-size:.9rem;">View Contact Details</span></div>
+            <div class="plan-feature d-flex gap-2 align-items-center mb-2"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i><span style="font-size:.9rem;">Advanced Search Filters</span></div>
+            <div class="plan-feature d-flex gap-2 align-items-center mb-2"><i class="bi bi-x-circle-fill" style="color:#CCC;"></i><span style="font-size:.9rem;color:var(--muted);">Profile Highlight (Elite only)</span></div>
+            <div class="plan-feature d-flex gap-2 align-items-center"><i class="bi bi-x-circle-fill" style="color:#CCC;"></i><span style="font-size:.9rem;color:var(--muted);">Dedicated Manager (Elite only)</span></div>
+          </div>
+          <div class="info-card">
+            <div class="card-title mb-3"><i class="bi bi-clock-history" style="color:var(--pink);"></i> Payment History</div>
+            <div class="interest-item"><div style="font-size:1.4rem;">💳</div><div class="flex-grow-1"><div class="i-name">Premium Plan – 3 Months</div><div class="i-meta">Paid on 01 Oct 2025 · Razorpay</div></div><div style="font-weight:700;color:var(--green);">₹999</div></div>
+            <div class="interest-item"><div style="font-size:1.4rem;">💳</div><div class="flex-grow-1"><div class="i-name">Premium Plan – 3 Months</div><div class="i-meta">Paid on 01 Jul 2025 · Razorpay</div></div><div style="font-weight:700;color:var(--green);">₹999</div></div>
+          </div>
+        </div>
+
+      </div><!-- /col-lg-8 -->
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="col-lg-4">
+
+        <!-- Action Bar (sticky) -->
+        <div class="action-bar mb-4" id="actionBar">
+          <div class="match-score-ring">
+            <div class="match-score-inner">
+              <div class="match-pct" id="matchPct">78%</div>
+              <div class="match-label">MATCH</div>
+            </div>
+          </div>
+          <div class="action-title">Compatibility Score</div>
+          <div class="quick-stat">
+            <div class="qs-item"><div class="qs-num">124</div><div class="qs-lbl">Views</div></div>
+            <div class="qs-item"><div class="qs-num">18</div><div class="qs-lbl">Interests</div></div>
+            <div class="qs-item"><div class="qs-num">5</div><div class="qs-lbl">Chats</div></div>
+          </div>
+          <div class="d-flex flex-column gap-2">
+            <button class="btn btn-pink w-100" onclick="sendInterest(this)"><i class="bi bi-heart me-2"></i>Send Interest</button>
+            <button class="btn btn-green w-100" onclick="openChat()"><i class="bi bi-chat-dots me-2"></i>Send Message</button>
+            <button class="btn btn-outline-pink w-100" onclick="shortlistProfile(this)"><i class="bi bi-bookmark me-2"></i>Shortlist Profile</button>
+            <button class="btn" style="border:1.5px solid #EDD7EA;border-radius:50px;font-weight:600;font-size:.88rem;color:var(--muted);" onclick="reportProfile()"><i class="bi bi-flag me-2"></i>Report Profile</button>
+          </div>
+        </div>
+
+        <!-- Profile Completion -->
+        <div class="info-card mb-4">
+          <div class="card-title mb-3"><i class="bi bi-graph-up" style="color:var(--pink);"></i> Complete Your Profile</div>
+          <div class="progress-wrap"><div class="progress-label"><span>Basic Info</span><span style="color:var(--green);">✔ Done</span></div><div class="progress"><div class="progress-bar" style="width:100%"></div></div></div>
+          <div class="progress-wrap mt-2"><div class="progress-label"><span>Photos</span><span style="color:var(--green);">6 added</span></div><div class="progress"><div class="progress-bar" style="width:60%"></div></div></div>
+          <div class="progress-wrap mt-2"><div class="progress-label"><span>Horoscope</span><span style="color:var(--pink);">Partial</span></div><div class="progress"><div class="progress-bar" style="width:70%"></div></div></div>
+          <div class="progress-wrap mt-2"><div class="progress-label"><span>Family Details</span><span style="color:var(--green);">✔ Done</span></div><div class="progress"><div class="progress-bar" style="width:100%"></div></div></div>
+          <div class="progress-wrap mt-2"><div class="progress-label"><span>Partner Pref.</span><span style="color:var(--green);">✔ Done</span></div><div class="progress"><div class="progress-bar" style="width:100%"></div></div></div>
+          <a href="#" class="btn btn-outline-pink w-100 mt-3 btn-sm">Complete Profile →</a>
+        </div>
+
+        <!-- Similar Profiles -->
+        <div class="info-card">
+          <div class="card-title mb-3"><i class="bi bi-people-fill" style="color:var(--green);"></i> Similar Profiles</div>
+          <div class="interest-item">
+            <div class="i-avatar">👩</div>
+            <div class="flex-grow-1"><div class="i-name">Deepa S.</div><div class="i-meta">Iyengar · 24 yrs · Teacher · Madurai</div></div>
+            <a href="#" class="btn btn-pink btn-sm py-0 px-2" style="font-size:.7rem;">View</a>
+          </div>
+          <div class="interest-item">
+            <div class="i-avatar" style="background:linear-gradient(135deg,var(--green-pale),var(--pink-pale));">👩</div>
+            <div class="flex-grow-1"><div class="i-name">Anitha R.</div><div class="i-meta">Iyer · 25 yrs · Doctor · Coimbatore</div></div>
+            <a href="#" class="btn btn-pink btn-sm py-0 px-2" style="font-size:.7rem;">View</a>
+          </div>
+          <div class="interest-item">
+            <div class="i-avatar" style="background:linear-gradient(135deg,#EDE7F6,var(--pink-pale));">👩</div>
+            <div class="flex-grow-1"><div class="i-name">Kavitha M.</div><div class="i-meta">Vellalar · 27 yrs · MBA · Salem</div></div>
+            <a href="#" class="btn btn-pink btn-sm py-0 px-2" style="font-size:.7rem;">View</a>
+          </div>
+        </div>
+
+      </div><!-- /col-lg-4 -->
+    </div>
+  </div>
+</div>
+
+<!-- ════════ DESKTOP FOOTER ════════ -->
+<footer class="desktop-footer">
+  <div class="footer-nav-links">
+    <a href="index.html#howitworks">How It Works</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2025 Namma Matrimony. All rights reserved. Made with 💗 in Tamil Nadu, India.</div>
+</footer>
+
+<!-- ════════ MOBILE BOTTOM NAV ════════ -->
+<nav class="mob-bottom-nav">
+  <a href="index.html" class="mob-nav-item n-home " onclick="setMobActive(this)">
+    <div class="mob-nav-icon">🏠</div><span class="mob-nav-label">Home</span>
+  </a>
+  <a href="search.html" class="mob-nav-item n-profiles " onclick="setMobActive(this)">
+    <div class="mob-nav-icon">👥</div><span class="mob-nav-label">Profiles</span>
+  </a>
+  <a href="#matches" class="mob-nav-item n-matches " onclick="setMobActive(this)">
+    <div class="mob-nav-icon">💞</div><span class="mob-nav-label">Matches</span>
+  </a>
+  <button class="mob-nav-item n-account active" id="mobAcctBtn" onclick="handleAccountTap()">
+    <div class="mob-nav-icon">👤</div><span class="mob-nav-label">Account</span>
+  </button>
+</nav>
+
+<!-- Account Drawer (logged in) -->
+<div class="acct-overlay" id="acctOverlay" onclick="closeAcctDrawer()"></div>
+<div class="acct-drawer" id="acctDrawer">
+  <div class="acct-drawer-handle"></div>
+  <div class="acct-drawer-header">
+    <div class="acct-avatar">👩</div>
+    <div>
+      <div class="acct-name">Priya Ramasubramanian</div>
+      <div class="acct-id">NM-2024-08731 · ⭐ Premium</div>
+    </div>
+  </div>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-person-fill" style="color:var(--pink);"></i>Overview</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-images" style="color:var(--green);"></i>Photos</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-stars" style="color:var(--pink);"></i>Horoscope</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-heart-fill" style="color:var(--pink);"></i>Interests</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-chat-dots-fill" style="color:var(--green);"></i>Chat</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-shield-lock-fill" style="color:var(--green);"></i>Privacy</a>
+  <a href="profile.html" class="acct-menu-item" onclick="closeAcctDrawer()"><i class="bi bi-gem" style="color:#FFD700;"></i>Subscription</a>
+  <button class="acct-menu-item danger" onclick="simulateLogout();closeAcctDrawer()"><i class="bi bi-box-arrow-right"></i>Logout</button>
+</div>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  /* Tab switching */
+  function switchTab(id,el){
+    document.querySelectorAll('.tab-pane-custom').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    el.classList.add('active');
+    window.scrollTo({top:document.querySelector('.profile-banner').offsetHeight+60,behavior:'smooth'});
+  }
+
+  /* Interest filter */
+  function filterInterest(btn){
+    document.querySelectorAll('[onclick^="filterInterest"]').forEach(b=>{b.classList.remove('btn-pink');b.classList.add('btn-outline-pink')});
+    btn.classList.remove('btn-outline-pink');btn.classList.add('btn-pink');
+  }
+
+  /* Send interest */
+  function sendInterest(btn){
+    btn.innerHTML='<i class="bi bi-heart-fill me-1"></i>Interest Sent!';
+    btn.style.background='linear-gradient(135deg,var(--green),var(--green-light))';
+    btn.disabled=true;
+  }
+
+  /* Shortlist */
+  function shortlistProfile(btn){
+    btn.innerHTML='<i class="bi bi-bookmark-fill me-2"></i>Shortlisted!';
+    btn.style.borderColor=btn.style.color='var(--green)';
+    btn.style.background='var(--green-pale)';
+  }
+
+  /* Report */
+  function reportProfile(){alert('Thank you. Our team will review this profile.')}
+
+  /* Accept/Reject interest */
+  function acceptInterest(btn){const item=btn.closest('.interest-item');item.querySelector('.i-status').innerHTML='<span class="status-pill status-accepted">✔ Accepted</span>'}
+  function rejectInterest(btn){const item=btn.closest('.interest-item');item.querySelector('.i-status').innerHTML='<span class="status-pill status-rejected">✕ Declined</span>'}
+
+  /* Open chat tab */
+  function openChat(){switchTab('chat',document.querySelector('[onclick*="chat"]'))}
+
+  /* Chat send */
+  function sendChat(){
+    const inp=document.getElementById('chatInput');
+    const msg=inp.value.trim();
+    if(!msg)return;
+    const chatArea=inp.closest('.info-card').querySelector('[style*="min-height"]');
+    chatArea.innerHTML+=`<div class="chat-bubble mine mt-3">${msg}</div><div class="chat-time text-end me-1">Now ✓</div>`;
+    inp.value='';
+    chatArea.scrollTop=chatArea.scrollHeight;
+  }
+
+  /* Privacy toggles */
+  function togglePrivacy(el,type){console.log('Privacy changed:',type,'→',el.checked)}
+
+  /* Edit sections */
+  function editSection(section){alert('Opening '+section+' edit form…')}
+
+  /* Lang switch */
+  function switchLang(btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+
+  /* Mobile nav */
+  function setMobActive(el){document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+
+  /* Animate match score ring */
+  let score=0;
+  const pctEl=document.getElementById('matchPct');
+  const ring=document.querySelector('.match-score-ring');
+  const t=setInterval(()=>{
+    score=Math.min(score+2,78);
+    pctEl.textContent=score+'%';
+    ring.style.background=`conic-gradient(var(--green) 0% ${score}%,rgba(27,140,94,.15) ${score}% 100%)`;
+    if(score>=78)clearInterval(t);
+  },20);
+
+
+  /* ── Login state ── */
+  let isLoggedIn = false;
+  function simulateLogin(){isLoggedIn=true;document.getElementById('desktopLoggedOut').style.display='none';document.getElementById('desktopLoggedIn').style.cssText='display:flex!important'}
+  function simulateLogout(){isLoggedIn=false;document.getElementById('desktopLoggedIn').style.display='none';document.getElementById('desktopLoggedOut').style.cssText='display:flex!important'}
+  /* ── Account drawer ── */
+  function handleAccountTap(){
+    if(isLoggedIn){openAcctDrawer();}
+    else{window.location.href='login.html';}
+    document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('active'));
+    document.getElementById('mobAcctBtn').classList.add('active');
+  }
+  function openAcctDrawer(){document.getElementById('acctDrawer').classList.add('open');document.getElementById('acctOverlay').classList.add('open');document.body.style.overflow='hidden'}
+  function closeAcctDrawer(){document.getElementById('acctDrawer').classList.remove('open');document.getElementById('acctOverlay').classList.remove('open');document.body.style.overflow=''}
+  /* ── Scroll glow ── */
+  const _mainNav=document.getElementById('mainNav');
+  const _mobNav=document.getElementById('mobNavSticky');
+  window.addEventListener('scroll',()=>{
+    const s=window.scrollY>40;
+    _mainNav&&_mainNav.classList.toggle('scrolled',s);
+    _mobNav&&_mobNav.classList.toggle('scrolled',s);
+    const bt=document.getElementById('backTop');
+    bt&&bt.classList.toggle('visible',window.scrollY>300);
+  });
+  /* ── Lang ── */
+  function switchLang(btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+  /* ── Mobile nav active ── */
+  function setMobActive(el){document.querySelectorAll('.mob-nav-item').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+
+</script>
+</body>
+</html>
