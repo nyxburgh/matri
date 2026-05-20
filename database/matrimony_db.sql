@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 09, 2026 at 04:27 PM
+-- Host: 127.0.0.1
+-- Generation Time: May 20, 2026 at 09:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,7 +48,13 @@ INSERT INTO `activity_logs` (`id`, `user_id`, `action`, `module`, `ref_id`, `ip_
 (2, NULL, 'admin_login_failed', 'Admin', NULL, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', NULL, '2026-04-08 22:31:05'),
 (3, 1, 'admin_login', 'Admin', NULL, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', NULL, '2026-04-08 22:31:18'),
 (4, 1, 'admin_login', 'Admin', NULL, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', NULL, '2026-04-09 17:52:47'),
-(5, 1, 'admin_login', 'Admin', NULL, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', NULL, '2026-04-09 19:07:40');
+(5, 1, 'admin_login', 'Admin', NULL, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36', NULL, '2026-04-09 19:07:40'),
+(6, NULL, 'admin_login_failed', 'Admin', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', NULL, '2026-04-14 19:09:04'),
+(7, NULL, 'admin_login_failed', 'Admin', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', NULL, '2026-04-14 19:09:29'),
+(8, NULL, 'admin_login_failed', 'Admin', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', NULL, '2026-04-14 19:10:01'),
+(9, NULL, 'admin_login_failed', 'Admin', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', NULL, '2026-04-14 19:15:33'),
+(10, NULL, 'admin_login_failed', 'Admin', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', NULL, '2026-04-14 19:15:40'),
+(11, 1, 'admin_login', 'Admin', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', NULL, '2026-04-14 19:15:48');
 
 -- --------------------------------------------------------
 
@@ -503,7 +509,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `profile_id`, `name`, `email`, `mobile`, `password_hash`, `role`, `account_for`, `gender`, `status`, `email_verified`, `mobile_verified`, `profile_complete`, `last_login`, `last_active`, `lang`, `created_at`, `updated_at`) VALUES
-(1, 'MAT-000000', 'Super Admin', 'admin@mymatrimony.com', NULL, '$2y$12$pAH456Wua4i6Rvnlg.X0TerM9oFHsnxftbEaR6ua6ycTTRbA8Vo3G', 'admin', 'self', 'male', 'active', 1, 1, 1, '2026-04-09 19:07:40', NULL, 'en', '2026-04-08 18:01:22', '2026-04-09 19:07:40');
+(1, 'MAT-000000', 'Super Admin', 'admin@mymatrimony.com', NULL, '$2y$12$pAH456Wua4i6Rvnlg.X0TerM9oFHsnxftbEaR6ua6ycTTRbA8Vo3G', 'admin', 'self', 'male', 'active', 1, 1, 1, '2026-04-14 19:15:48', NULL, 'en', '2026-04-08 18:01:22', '2026-04-14 19:15:48');
 
 -- --------------------------------------------------------
 
@@ -743,7 +749,7 @@ ALTER TABLE `user_subscriptions`
 -- AUTO_INCREMENT for table `activity_logs`
 --
 ALTER TABLE `activity_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `blocked_users`
